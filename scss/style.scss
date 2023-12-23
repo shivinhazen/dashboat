@@ -19,3 +19,77 @@ $font-family-sans-serif: 'Inter', sans-serif;
 @import 'site-blocks';
 @import 'site-elements';
 @import 'site-footer';
+// Importação das fontes - mantenha como já está no seu projeto
+@import url('https://fonts.googleapis.com/css?family=Lato:100,300,400');
+@import url('https://fonts.googleapis.com/css?family=Roboto:100');
+
+// Mixin para o botão
+@mixin button($bcolor, $url, $x1, $y1, $bor, $col) {
+    background: $bcolor;
+    -webkit-mask: url($url);
+    mask: url($url);
+    -webkit-mask-size: $x1 $y1;
+    mask-size: $x1 $y1;
+    border: $bor;
+    color: $col;
+}
+
+// Seus estilos globais
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Lato:100,300,400');
+@import url('https://fonts.googleapis.com/css?family=Roboto:100');
+
+@mixin button($bcolor, $url, $x1, $y1, $bor, $col) {
+    background: $bcolor;
+    -webkit-mask: url($url);
+    mask: url($url);
+    -webkit-mask-size: $x1 $y1;
+    mask-size: $x1 $y1;
+    border: $bor;
+    color: $col;
+    transition: 0.5s;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size: 11px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.btn.btn-primary {
+    @include button(#000, "https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png", 2300%, 100%, none, #fff);
+
+    &:hover {
+        -webkit-animation: ani 0.7s steps(22) forwards;
+        animation: ani 0.7s steps(22) forwards;
+    }
+}
+
+@-webkit-keyframes ani {
+    from { -webkit-mask-position: 0 0; }
+    to { -webkit-mask-position: 100% 0; }
+}
+
+@keyframes ani {
+    from { mask-position: 0 0; }
+    to { mask-position: 100% 0; }
+}
+
+@-webkit-keyframes ani2 {
+    from { -webkit-mask-position: 100% 0; }
+    to { -webkit-mask-position: 0 0; }
+}
+
+@keyframes ani2 {
+    from { mask-position: 100% 0; }
+    to { mask-position: 0 0; }
+}

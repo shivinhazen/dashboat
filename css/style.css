@@ -67,12 +67,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
     outline: none;
     -webkit-box-shadow: none;
     box-shadow: none; }
-  .btn.btn-primary {
-    background: #0b9299 ;
-    border-color: #0b9299 }
-    .btn.btn-primary:hover {
-      border-color: #036e70;
-      background: #036e70; }
+    
   .btn.btn-outline-white {
     border: 2px solid #ffffff; }
     .btn.btn-outline-white:hover {
