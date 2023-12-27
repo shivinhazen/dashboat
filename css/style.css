@@ -186,7 +186,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
     .site-nav .site-navigation .site-menu > li {
       display: inline-block; }
       .site-nav .site-navigation .site-menu > li > a {
-        font-size: 14px;
+        font-size: 16px;
         padding: 10px 15px;
         display: inline-block;
         text-decoration: none !important;
@@ -560,7 +560,9 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
   .hero {
     padding: 0 0 10rem 0;
     background: #6998AB;
-    margin-bottom: 100px; }
+    margin-bottom: 100px; 
+    height: 100vh;
+  }
     .hero.hero-inner {
       padding: 9rem 0 7rem 0;
       margin-bottom: auto;
@@ -583,7 +585,6 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
           content: ""; }
     .hero .intro-wrap {
       position: relative;
-      padding-top: 300px;
       z-index: 1; }
     .contact-intro {
         padding-top: 80vh; /* Ajuste este valor conforme necessário para a página de contato */
@@ -625,7 +626,19 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
             background-attachment: fixed;
         }
 .untree_co-section {
-  padding: 70px 0; }
+  padding: 70px 0;
+  
+}
+
+.untree_co-section p {
+  font-size: 16px;
+  
+}
+.untree_co-section h3 {
+  font-size: 16px;
+  padding-top: 5px;
+  
+}
 
 .media-thumb {
   position: relative;
@@ -654,6 +667,10 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
     -webkit-transition: .3s transform ease;
     -o-transition: .3s transform ease;
     transition: .3s transform ease; }
+    .media-thumb .media-text-bg {
+      background-color: #FFF;
+      height: 100%;
+    }
   .media-thumb .media-text {
     position: absolute;
     top: 20px;
@@ -1415,4 +1432,8 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
 
 .texto {
   color: #fff !important;
+}
+
+.xpp {
+  margin-top: 100px;
 }
