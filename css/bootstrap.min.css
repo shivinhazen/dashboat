@@ -1,4 +1,4 @@
-/*!
+/*
  * Bootstrap v4.5.2 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
  * Copyright 2011-2020 Twitter, Inc.
@@ -2424,13 +2424,13 @@ fieldset:disabled a.btn {
 }
 .btn-primary {
 	color: #fff;
-	background-color: #007bff;
-	border-color: #007bff;
+	background-color: #A0c9c9;
+	border-color: #A0c9c9;
 }
 .btn-primary:hover {
 	color: #fff;
-	background-color: #0069d9;
-	border-color: #0062cc;
+	background-color: #a0c9c99b;
+	border-color: #a0c9c99f;
 }
 .btn-primary.focus,
 .btn-primary:focus {
