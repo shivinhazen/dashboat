@@ -585,6 +585,9 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
       position: relative;
       padding-top: 300px;
       z-index: 1; }
+    .contact-intro {
+        padding-top: 80vh; /* Ajuste este valor conforme necessário para a página de contato */
+    }
   
   
     .hero .slides {
@@ -612,6 +615,15 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
         .hero .slides img.active {
          opacity: 0.7 ;
           z-index: 1; }
+          .contact-page-hero {
+            background-image: url('images/contato.webp'); /* Caminho para a imagem de fundo */
+            background-size: cover; /* Garante que a imagem cubra a área disponível */
+            background-position: center center; /* Centraliza a imagem */
+            background-repeat: no-repeat; /* Impede a repetição da imagem */
+            height: 100vh; /* Altura total da tela */
+            width: 100%; /* Largura total */
+            background-attachment: fixed;
+        }
 .untree_co-section {
   padding: 70px 0; }
 

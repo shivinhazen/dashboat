@@ -40,7 +40,7 @@
         this.maxDate = false;
         this.maxSpan = false;
         this.autoApply = false;
-        this.singleDatePicker = false;
+        this.singleDatePicker = true;
         this.showDropdowns = false;
         this.minYear = moment().subtract(100, 'year').format('YYYY');
         this.maxYear = moment().add(100, 'year').format('YYYY');
@@ -70,14 +70,14 @@
 
         this.locale = {
             direction: 'ltr',
-            format: moment.localeData().longDateFormat('L'),
+            format:'DD/MM/YYYY',
             separator: ' - ',
             applyLabel: 'Ir',
             cancelLabel: 'Cancelar',
             weekLabel: 'W',
             customRangeLabel: 'Custom Range',
-            daysOfWeek: moment.weekdaysMin(),
-            monthNames: moment.monthsShort(),
+            daysOfWeek: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],
+            monthNames: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
             firstDay: moment.localeData().firstDayOfWeek()
         };
 

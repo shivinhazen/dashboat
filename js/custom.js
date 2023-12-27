@@ -244,9 +244,14 @@ $(function(){
 		} , { offset: '95%' } );
 
 	}
-	counter();
-	
-	if($('input[name="daterange"]').length) {
-		$('input[name="daterange"]').daterangepicker();
-	}
-})
+	$(document).ready(function() {
+		counter();
+		
+		if ($('input[name="daterange"]').length) {
+			$('input[name="daterange"]').daterangepicker({
+				singleDatePicker: true,
+				locale: {
+					format: 'YYYY-MM-DD'
+				}
+			});
+		}
