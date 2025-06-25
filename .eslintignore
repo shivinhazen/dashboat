@@ -7,6 +7,10 @@ js/jquery.waypoints.min.js
 js/jquery.fancybox.min.js
 js/jquery.animateNumber.min.js
 js/typed.js
+js/*.bundle.js
+js/**/*.bundle.js
+js/*.map
+js/**/*.map
 
 # Ignorar o diretório node_modules (embora o ESLint geralmente já faça isso)
 node_modules/
@@ -17,4 +21,10 @@ logs
 
 backups
 
-data 
+data
+
+public/
+
+js/custom.js
+src/js/custom.js
+js/form-validation.js 

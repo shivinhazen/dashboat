@@ -275,20 +275,6 @@ class FormValidator {
     }, 5000);
   }
 
-  showError(form, message) {
-    // Fallback para sistema antigo
-    const errorDiv = document.createElement('div');
-    errorDiv.className = 'alert alert-danger mt-3';
-    errorDiv.textContent = message;
-
-    form.appendChild(errorDiv);
-
-    // Remove a mensagem após 5 segundos
-    setTimeout(() => {
-      errorDiv.remove();
-    }, 5000);
-  }
-
   applyPhoneMask(input) {
     let value = input.value.replace(/\D/g, '');
 

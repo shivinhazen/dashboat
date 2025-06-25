@@ -225,23 +225,6 @@ class ReservationManager {
     }
   }
 
-  showError(form, message) {
-    if (window.messageSystem) {
-      window.messageSystem.showError('Erro na Reserva', message);
-      window.messageSystem.showFormMessage(form, 'error', message);
-    } else {
-      // Fallback para sistema antigo
-      const errorDiv = document.createElement('div');
-      errorDiv.className = 'alert alert-danger mt-3';
-      errorDiv.textContent = message;
-      form.appendChild(errorDiv);
-
-      setTimeout(() => {
-        errorDiv.remove();
-      }, 5000);
-    }
-  }
-
   scrollToTop() {
     window.scrollTo({
       top: 0,

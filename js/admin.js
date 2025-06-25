@@ -299,7 +299,7 @@ class AdminPanel {
         this.deleteItem(target.dataset.id, target.dataset.type);
         return;
       }
-      
+
       // Logout
       if (target.matches('.logout-btn')) {
         e.preventDefault();
@@ -313,7 +313,7 @@ class AdminPanel {
         if (modal) this.closeModal(modal.id);
         return;
       }
-      
+
       // Confirmar exclusão
       if (target.matches('.btn-confirm')) {
         const modal = target.closest('.modal-overlay');
@@ -376,7 +376,11 @@ class AdminPanel {
     function setTrendDashboard(elementSelector, value, thresholds, messages) {
       const el = document.querySelector(elementSelector);
       if (!el) return;
-      el.parentElement.classList.remove('trend-green', 'trend-yellow', 'trend-red');
+      el.parentElement.classList.remove(
+        'trend-green',
+        'trend-yellow',
+        'trend-red'
+      );
       let colorClass = 'trend-green';
       let msg = '';
       if (value >= thresholds.green) {
@@ -464,9 +468,14 @@ class AdminPanel {
     }
 
     // Taxa de Cancelamento
-    const cancellationIndicator = document.getElementById('cancellation-rate-indicator');
+    const cancellationIndicator = document.getElementById(
+      'cancellation-rate-indicator'
+    );
     if (cancellationIndicator && stats.reservationStatusCount) {
-      const total = Object.values(stats.reservationStatusCount).reduce((a, b) => a + b, 0);
+      const total = Object.values(stats.reservationStatusCount).reduce(
+        (a, b) => a + b,
+        0
+      );
       const cancelled = stats.reservationStatusCount.cancelada || 0;
       if (total > 0 && cancelled > 0) {
         const percent = ((cancelled / total) * 100).toFixed(1);
@@ -495,12 +504,14 @@ class AdminPanel {
           reservationsData.reservations.slice(0, 5)
         );
         setTimeout(() => {
-          document.querySelectorAll('.reservation-activity-item').forEach(card => {
-            card.addEventListener('click', e => {
-              const id = card.getAttribute('data-reservation-id');
-              if (id) this.viewReservationDetails(id);
+          document
+            .querySelectorAll('.reservation-activity-item')
+            .forEach(card => {
+              card.addEventListener('click', e => {
+                const id = card.getAttribute('data-reservation-id');
+                if (id) this.viewReservationDetails(id);
+              });
             });
-          });
         }, 100);
       }
 
@@ -530,11 +541,10 @@ class AdminPanel {
 
     container.innerHTML = reservations
       .map(normalizeGuests)
-      .map(
-        reservation => {
-          const guests = reservation.guests || 0;
-          const guestsLabel = `${guests} ${guests == 1 ? 'pessoa' : 'pessoas'}`;
-          return `
+      .map(reservation => {
+        const guests = reservation.guests || 0;
+        const guestsLabel = `${guests} ${guests == 1 ? 'pessoa' : 'pessoas'}`;
+        return `
       <div class="activity-item reservation-activity-item" data-reservation-id="${reservation.id}" style="display: flex; align-items: stretch;">
         <div class="activity-icon"><i class="fas fa-ship"></i></div>
         <div class="activity-content" style="flex:1; display: flex; flex-direction: column; justify-content: center;">
@@ -550,8 +560,7 @@ class AdminPanel {
         </div>
       </div>
     `;
-        }
-      )
+      })
       .join('');
   }
 
@@ -593,8 +602,10 @@ class AdminPanel {
     try {
       let url = '/api/reservations';
       const params = [];
-      if (filters.status) params.push(`status=${encodeURIComponent(filters.status)}`);
-      if (filters.destination) params.push(`destination=${encodeURIComponent(filters.destination)}`);
+      if (filters.status)
+        params.push(`status=${encodeURIComponent(filters.status)}`);
+      if (filters.destination)
+        params.push(`destination=${encodeURIComponent(filters.destination)}`);
       if (params.length) url += '?' + params.join('&');
       const response = await fetch(url, {
         headers: this.addAuthHeaders(),
@@ -682,8 +693,10 @@ class AdminPanel {
     if (!reservations || reservations.length === 0) {
       tableHTML += `<tr><td colspan="6" class="text-center">Nenhuma reserva encontrada.</td></tr>`;
     } else {
-      tableHTML += reservations.map(normalizeGuests).map(
-        reservation => `
+      tableHTML += reservations
+        .map(normalizeGuests)
+        .map(
+          reservation => `
           <tr data-id="${reservation.id}">
               <td>${this.escapeHtml(reservation.name)}</td>
               <td>${this.escapeHtml(reservation.destination)}</td>
@@ -702,7 +715,8 @@ class AdminPanel {
               </td>
           </tr>
       `
-      ).join('');
+        )
+        .join('');
     }
     tableHTML += `</tbody></table></div>`;
     reservationsList.innerHTML = tableHTML;
@@ -719,14 +733,19 @@ class AdminPanel {
     if (filterStatus && this.currentFilters && this.currentFilters.status) {
       filterStatus.value = this.currentFilters.status;
     }
-    if (filterDestination && this.currentFilters && this.currentFilters.destination) {
+    if (
+      filterDestination &&
+      this.currentFilters &&
+      this.currentFilters.destination
+    ) {
       filterDestination.value = this.currentFilters.destination;
     }
 
     if (filterBtn && filterDropdown) {
       filterBtn.addEventListener('click', function (e) {
         e.stopPropagation();
-        filterDropdown.style.display = filterDropdown.style.display === 'block' ? 'none' : 'block';
+        filterDropdown.style.display =
+          filterDropdown.style.display === 'block' ? 'none' : 'block';
       });
       document.addEventListener('click', function handler(e) {
         if (!filterDropdown.contains(e.target) && e.target !== filterBtn) {
@@ -736,7 +755,7 @@ class AdminPanel {
       });
     }
     if (filterForm) {
-      filterForm.addEventListener('submit', (e) => {
+      filterForm.addEventListener('submit', e => {
         e.preventDefault();
         filterDropdown.style.display = 'none';
         const status = filterStatus.value;
@@ -939,7 +958,11 @@ class AdminPanel {
       const el = document.getElementById(elementId);
       if (!el) return;
       // Remove classes antigas
-      el.parentElement.classList.remove('trend-green', 'trend-yellow', 'trend-red');
+      el.parentElement.classList.remove(
+        'trend-green',
+        'trend-yellow',
+        'trend-red'
+      );
       let colorClass = 'trend-green';
       let msg = '';
       if (value >= thresholds.green) {
@@ -1072,29 +1095,46 @@ class AdminPanel {
 
     // Gráfico de linha: Evolução Mensal de Reservas
     const monthlyChart = document.getElementById('monthly-chart');
-    if (monthlyChart && stats.monthlyDistribution && stats.monthlyDistribution.reservations) {
-      if (this.charts && this.charts.monthlyLine) this.charts.monthlyLine.destroy();
+    if (
+      monthlyChart &&
+      stats.monthlyDistribution &&
+      stats.monthlyDistribution.reservations
+    ) {
+      if (this.charts && this.charts.monthlyLine)
+        this.charts.monthlyLine.destroy();
       this.charts = this.charts || {};
       const monthNames = [
-        'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun',
-        'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez',
+        'Jan',
+        'Fev',
+        'Mar',
+        'Abr',
+        'Mai',
+        'Jun',
+        'Jul',
+        'Ago',
+        'Set',
+        'Out',
+        'Nov',
+        'Dez',
       ];
       this.charts.monthlyLine = new Chart(monthlyChart.getContext('2d'), {
         type: 'line',
         data: {
           labels: monthNames,
-          datasets: [{
-            label: 'Reservas',
-            data: stats.monthlyDistribution.reservations,
-            borderColor: '#2563eb',
-            backgroundColor: 'rgba(37, 99, 235, 0.13)',
-            fill: true,
-            tension: 0.4,
-            pointRadius: 4,
-            pointBackgroundColor: '#2563eb',
-            pointBorderColor: '#fff',
-            pointHoverRadius: 6,
-          }],
+          datasets: [
+            {
+              label: 'Reservas',
+              data: stats.monthlyDistribution.reservations,
+              borderColor: '#2563eb',
+              backgroundColor: 'rgba(37, 99, 235, 0.13)',
+              fill: true,
+              tension: 0.4,
+              pointRadius: 4,
+              pointBackgroundColor: '#2563eb',
+              pointBorderColor: '#fff',
+              pointHoverRadius: 6,
+            },
+          ],
         },
         options: {
           plugins: { legend: { display: false } },
@@ -1157,24 +1197,51 @@ class AdminPanel {
 
     // Gráfico de pizza: Reservas por mês
     const monthlyPie = document.getElementById('monthly-pie-chart');
-    if (monthlyPie && stats.monthlyDistribution && stats.monthlyDistribution.reservations) {
-      if (this.charts && this.charts.monthlyPie) this.charts.monthlyPie.destroy();
+    if (
+      monthlyPie &&
+      stats.monthlyDistribution &&
+      stats.monthlyDistribution.reservations
+    ) {
+      if (this.charts && this.charts.monthlyPie)
+        this.charts.monthlyPie.destroy();
       this.charts = this.charts || {};
       const monthNames = [
-        'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun',
-        'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez',
+        'Jan',
+        'Fev',
+        'Mar',
+        'Abr',
+        'Mai',
+        'Jun',
+        'Jul',
+        'Ago',
+        'Set',
+        'Out',
+        'Nov',
+        'Dez',
       ];
       this.charts.monthlyPie = new Chart(monthlyPie.getContext('2d'), {
         type: 'pie',
         data: {
           labels: monthNames,
-          datasets: [{
-            data: stats.monthlyDistribution.reservations,
-            backgroundColor: [
-              '#2563eb', '#1d4ed8', '#3b82f6', '#60a5fa', '#93c5fd', '#38bdf8',
-              '#0ea5e9', '#0284c7', '#0369a1', '#0e7490', '#14b8a6', '#22d3ee'
-            ],
-          }],
+          datasets: [
+            {
+              data: stats.monthlyDistribution.reservations,
+              backgroundColor: [
+                '#2563eb',
+                '#1d4ed8',
+                '#3b82f6',
+                '#60a5fa',
+                '#93c5fd',
+                '#38bdf8',
+                '#0ea5e9',
+                '#0284c7',
+                '#0369a1',
+                '#0e7490',
+                '#14b8a6',
+                '#22d3ee',
+              ],
+            },
+          ],
         },
         options: {
           plugins: { legend: { display: true, position: 'bottom' } },
@@ -1184,7 +1251,8 @@ class AdminPanel {
     // Gráfico de pizza: Reservas por destino (3 cores principais)
     const destinationPie = document.getElementById('destination-pie-chart');
     if (destinationPie && stats.destinationDistribution) {
-      if (this.charts && this.charts.destinationPie) this.charts.destinationPie.destroy();
+      if (this.charts && this.charts.destinationPie)
+        this.charts.destinationPie.destroy();
       this.charts = this.charts || {};
       const labels = Object.keys(stats.destinationDistribution);
       const data = Object.values(stats.destinationDistribution);
@@ -1194,10 +1262,12 @@ class AdminPanel {
         type: 'pie',
         data: {
           labels,
-          datasets: [{
-            data,
-            backgroundColor,
-          }],
+          datasets: [
+            {
+              data,
+              backgroundColor,
+            },
+          ],
         },
         options: {
           plugins: { legend: { display: true, position: 'bottom' } },
@@ -1205,11 +1275,27 @@ class AdminPanel {
       });
     }
     // Sazonalidade: Mês com mais reservas (corrigido)
-    const seasonalityIndicator = document.getElementById('seasonality-indicator');
-    if (seasonalityIndicator && stats.monthlyDistribution && stats.monthlyDistribution.reservations) {
+    const seasonalityIndicator = document.getElementById(
+      'seasonality-indicator'
+    );
+    if (
+      seasonalityIndicator &&
+      stats.monthlyDistribution &&
+      stats.monthlyDistribution.reservations
+    ) {
       const monthNamesFull = [
-        'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
-        'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro',
+        'Janeiro',
+        'Fevereiro',
+        'Março',
+        'Abril',
+        'Maio',
+        'Junho',
+        'Julho',
+        'Agosto',
+        'Setembro',
+        'Outubro',
+        'Novembro',
+        'Dezembro',
       ];
       const reservations = stats.monthlyDistribution.reservations;
       let max = 0;
@@ -1229,9 +1315,9 @@ class AdminPanel {
         if (typeof prev === 'number') {
           const diff = max - prev;
           if (diff > 0) {
-            trendHtml = `<span style='color: var(--success-color); font-weight:600; margin-left:0.5rem;'><i class='fas fa-arrow-up'></i> +${diff} vs ${monthNamesFull[maxIndex-1]}</span>`;
+            trendHtml = `<span style='color: var(--success-color); font-weight:600; margin-left:0.5rem;'><i class='fas fa-arrow-up'></i> +${diff} vs ${monthNamesFull[maxIndex - 1]}</span>`;
           } else if (diff < 0) {
-            trendHtml = `<span style='color: var(--danger-color); font-weight:600; margin-left:0.5rem;'><i class='fas fa-arrow-down'></i> ${diff} vs ${monthNamesFull[maxIndex-1]}</span>`;
+            trendHtml = `<span style='color: var(--danger-color); font-weight:600; margin-left:0.5rem;'><i class='fas fa-arrow-down'></i> ${diff} vs ${monthNamesFull[maxIndex - 1]}</span>`;
           }
         }
       }
@@ -1241,7 +1327,9 @@ class AdminPanel {
         let record = 0;
         for (const year in stats.allYearsMonthlyDistribution) {
           const arr = stats.allYearsMonthlyDistribution[year];
-          arr.forEach(val => { if (val > record) record = val; });
+          arr.forEach(val => {
+            if (val > record) record = val;
+          });
         }
         if (max >= record && record > 0) {
           isRecorde = true;
@@ -1279,30 +1367,38 @@ class AdminPanel {
       }
     }
     // Top 3 Destinos
-    const topDestinationsIndicator = document.getElementById('top-destinations-indicator');
+    const topDestinationsIndicator = document.getElementById(
+      'top-destinations-indicator'
+    );
     if (topDestinationsIndicator && stats.destinationDistribution) {
       const destinations = Object.entries(stats.destinationDistribution)
         .sort((a, b) => b[1] - a[1])
         .slice(0, 3);
       if (destinations.length > 0) {
-        topDestinationsIndicator.innerHTML = destinations.map(([dest, count], idx) => `
+        topDestinationsIndicator.innerHTML = destinations
+          .map(
+            ([dest, count], idx) => `
           <div class="data-list-item" style="display: flex; align-items: center; gap: 1rem;">
-            <span style="font-size: 1.5rem; color: var(--primary-color);"><i class="fas fa-medal"></i> #${idx+1}</span>
+            <span style="font-size: 1.5rem; color: var(--primary-color);"><i class="fas fa-medal"></i> #${idx + 1}</span>
             <div>
               <div style="font-weight: 700; font-size: 1.05rem;">${dest}</div>
               <div style="color: #64748b; font-size: 0.95rem;">${count} reservas</div>
             </div>
           </div>
-        `).join('');
+        `
+          )
+          .join('');
       } else {
         topDestinationsIndicator.innerHTML = `<div class='empty-state'><i class='fas fa-map-marked-alt'></i><p>Nenhum destino registrado.</p></div>`;
       }
-
     }
     // DEBUG: Teste de preenchimento do card Clientes Fiéis
-    const loyalCustomersIndicator = document.getElementById('loyal-customers-ranking');
+    const loyalCustomersIndicator = document.getElementById(
+      'loyal-customers-ranking'
+    );
     if (loyalCustomersIndicator) {
-      loyalCustomersIndicator.innerHTML = "<div style='color: red; font-weight: bold;'>DEBUG: O JS está rodando!</div>";
+      loyalCustomersIndicator.innerHTML =
+        "<div style='color: red; font-weight: bold;'>DEBUG: O JS está rodando!</div>";
     }
     // Ranking de Clientes Fiéis (Top 3, mesmo que todos tenham só uma reserva)
     if (loyalCustomersIndicator && stats.loyalCustomers) {
@@ -1323,24 +1419,34 @@ class AdminPanel {
             </thead>
             <tbody>
               ${customers
-                .sort((a, b) => b.count - a.count || (b.lastDate ? new Date(b.lastDate) : 0) - (a.lastDate ? new Date(a.lastDate) : 0))
+                .sort(
+                  (a, b) =>
+                    b.count - a.count ||
+                    (b.lastDate ? new Date(b.lastDate) : 0) -
+                      (a.lastDate ? new Date(a.lastDate) : 0)
+                )
                 .slice(0, 3)
-                .map((c, i) => `
+                .map(
+                  (c, i) => `
                 <tr>
                   <td style="display:flex; align-items:center; gap:0.5em;">
-                    ${i === 0
-                      ? '<span class="ranking-badge ranking-gold"><i class="fas fa-trophy"></i></span>'
-                      : i === 1
-                        ? '<span class="ranking-badge ranking-silver"><i class="fas fa-medal"></i></span>'
-                        : i === 2
-                          ? '<span class="ranking-badge ranking-bronze"><i class="fas fa-medal"></i></span>'
-                          : ''}
+                    ${
+                      i === 0
+                        ? '<span class="ranking-badge ranking-gold"><i class="fas fa-trophy"></i></span>'
+                        : i === 1
+                          ? '<span class="ranking-badge ranking-silver"><i class="fas fa-medal"></i></span>'
+                          : i === 2
+                            ? '<span class="ranking-badge ranking-bronze"><i class="fas fa-medal"></i></span>'
+                            : ''
+                    }
                     <span class="loyal-customer-name" title="${c.name || c.email || '-'}">${c.name || c.email || '-'}</span>
                   </td>
                   <td style="text-align:center;">${c.count}</td>
                   <td style="text-align:center;"><span class="loyal-customer-date" title="${c.lastDate ? new Date(c.lastDate).toLocaleDateString('pt-BR') : '-'}">${c.lastDate ? new Date(c.lastDate).toLocaleDateString('pt-BR') : '-'}</span></td>
                 </tr>
-              `).join('')}
+              `
+                )
+                .join('')}
             </tbody>
           </table>
         `;
@@ -1399,8 +1505,9 @@ class AdminPanel {
       const modal = document.getElementById('messageModal');
       const modalBody = modal.querySelector('.modal-body');
 
-      modal.querySelector('.modal-title').innerHTML = `<i class="fas fa-envelope-open-text" style="margin-right: 0.5em; color: #2563eb; font-size: 1.25em;"></i> Mensagem de ${this.escapeHtml(safeValue(contact.name))}`;
-      
+      modal.querySelector('.modal-title').innerHTML =
+        `<i class="fas fa-envelope-open-text" style="margin-right: 0.5em; color: #2563eb; font-size: 1.25em;"></i> Mensagem de ${this.escapeHtml(safeValue(contact.name))}`;
+
       // Modal de Contato
       modalBody.innerHTML = `
         <dl class="details-list">
@@ -1435,11 +1542,14 @@ class AdminPanel {
     if (reservation && reservation.id) {
       const modal = document.getElementById('reservationModal');
       const modalBody = modal.querySelector('.modal-body');
-      
-      modal.querySelector('.modal-title').innerHTML = `<i class="fas fa-ship" style="margin-right: 0.5em; color: #2563eb; font-size: 1.25em;"></i> Reserva de ${this.escapeHtml(safeValue(reservation.name))}`;
-      
+
+      modal.querySelector('.modal-title').innerHTML =
+        `<i class="fas fa-ship" style="margin-right: 0.5em; color: #2563eb; font-size: 1.25em;"></i> Reserva de ${this.escapeHtml(safeValue(reservation.name))}`;
+
       // Modal de Reserva
-      const participantes = safeValue(reservation.participants || reservation.guests);
+      const participantes = safeValue(
+        reservation.participants || reservation.guests
+      );
       const participantesLabel = `${participantes} ${participantes == 1 ? 'pessoa' : 'pessoas'}`;
       modalBody.innerHTML = `
         <dl class="details-list reserva-row-3">
@@ -1475,12 +1585,17 @@ class AdminPanel {
             <dt><i class="fas fa-clock" style="color: #2563eb; margin-right: 0.4em;"></i>Solicitado em</dt>
             <dd>${reservation.timestamp ? new Date(reservation.timestamp).toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }) : '-'}</dd>
           </div>
-          ${((reservation.message && reservation.message.trim()) || (reservation.mensagem && reservation.mensagem.trim())) ? `
+          ${
+            (reservation.message && reservation.message.trim()) ||
+            (reservation.mensagem && reservation.mensagem.trim())
+              ? `
             <div class="message-row">
               <dt><i class="fas fa-comment-dots" style="color: #2563eb; margin-right: 0.4em;"></i>Mensagem</dt>
               <dd class="message-content">${this.escapeHtml(reservation.message || reservation.mensagem)}</dd>
             </div>
-          ` : ''}
+          `
+              : ''
+          }
         </dl>
       `;
 
@@ -1506,12 +1621,12 @@ class AdminPanel {
     }
 
     const itemText = type === 'reservation' ? 'a reserva' : 'o contato';
-    
+
     // Apanha o nome do item da linha da tabela correspondente
     let itemName = '';
     const row = document.querySelector(`tr[data-id="${safeId}"]`);
     if (row) {
-        itemName = row.querySelector('td:first-child')?.textContent;
+      itemName = row.querySelector('td:first-child')?.textContent;
     }
 
     modalTitle.textContent = 'Confirmar Exclusão';
@@ -1656,12 +1771,15 @@ class AdminPanel {
 
 // Função utilitária para exibir valores sem mostrar 'undefined' ou 'null'
 function safeValue(val) {
-    return (val === undefined || val === null) ? '-' : val;
+  return val === undefined || val === null ? '-' : val;
 }
 
 // Função utilitária para garantir que toda reserva tenha o campo 'guests' preenchido corretamente
 function normalizeGuests(reservation) {
-  if (reservation.guests === undefined && reservation.participants !== undefined) {
+  if (
+    reservation.guests === undefined &&
+    reservation.participants !== undefined
+  ) {
     reservation.guests = reservation.participants;
   }
   return reservation;
@@ -1672,4 +1790,3 @@ document.addEventListener('DOMContentLoaded', () => {
   adminPanel.initAuth();
   window.adminPanel = adminPanel;
 });
-

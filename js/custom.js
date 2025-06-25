@@ -185,7 +185,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if ($('.owl-single-text').length > 0) {
-      var owlText = $('.owl-single-text').owlCarousel({
+      let owlText;
+      owlText = $('.owl-single-text').owlCarousel({
         loop: true,
         autoHeight: true,
         margin: 0,
@@ -220,19 +221,13 @@ document.addEventListener('DOMContentLoaded', () => {
         onInitialized: counter,
       });
 
-      function counter(event) {
-        $('.owl-total').text(event.item.count);
-      }
-
       $('.js-custom-owl-next').click(function (e) {
         e.preventDefault();
         owl.trigger('next.owl.carousel');
-        owlText.trigger('next.owl.carousel');
       });
       $('.js-custom-owl-prev').click(function (e) {
         e.preventDefault();
         owl.trigger('prev.owl.carousel');
-        owlText.trigger('prev.owl.carousel');
       });
 
       $('.owl-dots .owl-dot').each(function (i) {
@@ -253,29 +248,9 @@ document.addEventListener('DOMContentLoaded', () => {
   };
   owlPlugin();
 
-  const counter = function () {
-    $('.count-numbers').waypoint(
-      function (direction) {
-        if (direction === 'down' && !$(this.element).hasClass('ut-animated')) {
-          const comma_separator_number_step =
-            $.animateNumber.numberStepFactories.separator(',');
-          $('.counter > span').each(function () {
-            const $this = $(this),
-              num = $this.data('number');
-            $this.animateNumber(
-              {
-                number: num,
-                numberStep: comma_separator_number_step,
-              },
-              7000
-            );
-          });
-        }
-      },
-      { offset: '95%' }
-    );
+  const counter = function (event) {
+    $('.owl-total').text(event.item.count);
   };
-  counter();
 
   // Scroll suave para âncoras (ajustado para rolar até o topo e animar a caixa de reserva)
   document.querySelectorAll('a[href="#reserva"]').forEach(anchor => {

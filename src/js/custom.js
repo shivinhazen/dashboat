@@ -185,7 +185,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if ($('.owl-single-text').length > 0) {
-      var owlText = $('.owl-single-text').owlCarousel({
+      let owlText;
+      owlText = $('.owl-single-text').owlCarousel({
         loop: true,
         autoHeight: true,
         margin: 0,

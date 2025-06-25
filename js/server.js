@@ -447,10 +447,18 @@ app.get(
       let reservations = await readData('reservations');
       const { status, destination } = req.query;
       if (status && typeof status === 'string') {
-        reservations = reservations.filter(r => (r.status || '').toString().trim().toLowerCase() === status.trim().toLowerCase());
+        reservations = reservations.filter(
+          r =>
+            (r.status || '').toString().trim().toLowerCase() ===
+            status.trim().toLowerCase()
+        );
       }
       if (destination && typeof destination === 'string') {
-        reservations = reservations.filter(r => (r.destination || '').toString().trim().toLowerCase() === destination.trim().toLowerCase());
+        reservations = reservations.filter(
+          r =>
+            (r.destination || '').toString().trim().toLowerCase() ===
+            destination.trim().toLowerCase()
+        );
       }
       res.json({
         success: true,
@@ -591,12 +599,10 @@ app.put(
         { id: req.params.id, error: error.message },
         req.user.username
       );
-      res
-        .status(500)
-        .json({
-          success: false,
-          message: 'Erro ao atualizar o status da reserva.',
-        });
+      res.status(500).json({
+        success: false,
+        message: 'Erro ao atualizar o status da reserva.',
+      });
     }
   }
 );
@@ -776,7 +782,9 @@ function calculateStats(contacts, reservations) {
     effectivenessRate: parseFloat(effectivenessRate.toFixed(1)),
     newContactsLast30Days,
     newReservationsLast30Days,
-    pendingReservations: reservations.filter(r => (r.status || '').toLowerCase() === 'pendente').length,
+    pendingReservations: reservations.filter(
+      r => (r.status || '').toLowerCase() === 'pendente'
+    ).length,
   };
 }
 
@@ -790,7 +798,11 @@ app.get('/api/stats', authenticateToken, requireAdmin, async (req, res) => {
 
     const destinationDistribution = reservations.reduce((acc, r) => {
       // Filtra destinos inválidos
-      if (r.destination && typeof r.destination === 'string' && r.destination.trim() !== '') {
+      if (
+        r.destination &&
+        typeof r.destination === 'string' &&
+        r.destination.trim() !== ''
+      ) {
         const dest = r.destination.trim();
         acc[dest] = (acc[dest] || 0) + 1;
       }
@@ -824,12 +836,16 @@ app.get('/api/stats', authenticateToken, requireAdmin, async (req, res) => {
       }
       customerMap[key].count++;
       const date = new Date(r.date);
-      if (!customerMap[key].lastDate || (date > new Date(customerMap[key].lastDate))) {
+      if (
+        !customerMap[key].lastDate ||
+        date > new Date(customerMap[key].lastDate)
+      ) {
         customerMap[key].lastDate = r.date;
       }
     });
-    const loyalCustomers = Object.values(customerMap)
-      .sort((a, b) => b.count - a.count || new Date(b.lastDate) - new Date(a.lastDate));
+    const loyalCustomers = Object.values(customerMap).sort(
+      (a, b) => b.count - a.count || new Date(b.lastDate) - new Date(a.lastDate)
+    );
 
     // Adiciona contagem de status das reservas
     const reservationStatusCount = reservations.reduce((acc, r) => {

@@ -31,12 +31,10 @@ exports.getContacts = async (req, res) => {
 exports.createContact = async (req, res) => {
   const { name, email, phone, message } = req.body;
   if (!name || !email || !message) {
-    return res
-      .status(400)
-      .json({
-        success: false,
-        message: 'Nome, email e mensagem são obrigatórios.',
-      });
+    return res.status(400).json({
+      success: false,
+      message: 'Nome, email e mensagem são obrigatórios.',
+    });
   }
   const contact = {
     id: Date.now(),
