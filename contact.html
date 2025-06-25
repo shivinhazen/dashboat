@@ -1,0 +1,271 @@
+<!-- /*
+* Template Name: Dash Boat Tour
+* Template Author: Lucas Leão
+* Template URI: https://dashboattour.com/
+* License: https://creativecommons.org/licenses/by/3.0/
+*/ -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Untree.co">
+  <link rel="shortcut icon" href="favicon.png">
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="bootstrap, bootstrap4" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+  <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
+  <title>Dash Boat Tour - Contato</title>
+</head>
+
+<body>
+
+
+  <div class="site-mobile-menu site-navbar-target">
+		<div class="site-mobile-menu-header">
+			<div class="site-mobile-menu-close">
+				<span class="icofont-close js-menu-toggle"></span>
+			</div>
+		</div>
+		<div class="site-mobile-menu-body"></div>
+	</div>
+
+
+	 <nav class="site-nav">
+		<div class="container">
+			<div class="site-navigation" >
+				<div class="row">
+					<div class="col-6 d-flex align-items-center">
+						<img src="images/logo.png" alt="Image" class="logo-img" height=" 35px">
+						<a href="index.html" class="logo m-0">Dash Boat Tour <span class="text-primary">.</span></a>
+
+					</div>
+					<div class="col-6">
+						<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu ">
+							<li class="active"><a href="index.html">Início</a></li>
+							<li class="has-children">
+							<li><a href="about.html">Sobre</a></li>
+							<li><a href="contact.html">Contato</a></li>
+						</ul>
+						
+						<a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
+							<span></span>
+						</a>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</nav>
+
+
+  <div class="hero-inner contact-page-hero" style="background-image: url(images/contato.webp)">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mx-auto text-center">
+          <div class="contact-intro">
+            <h1 class="mb-0 text-white">Entre em contato conosco</h1>
+            <p class="text-white"></p>
+            <p><a href="#contato" class="btn btn-primary">Agende agora !</a></p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .contact-page-hero {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 400px;
+      position: relative;
+    }
+    
+    /* Fallback para navegadores que não suportam WebP */
+    @supports not (background-image: url(images/contato.webp)) {
+      .contact-page-hero {
+        background-image: url(images/three.jpg) !important;
+      }
+    }
+    
+    /* Otimização de carregamento */
+    .contact-page-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+    
+    .contact-page-hero .container {
+      position: relative;
+      z-index: 2;
+    }
+  </style>
+
+  
+  
+  <div class="untree_co-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <form class="contact-form" data-aos="fade-up" data-aos-delay="200" id="contato">
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <label class="text-black" for="fname">Nome</label>
+                  <input type="text" class="form-control" id="fname" name="name" required>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label class="text-black" for="phone">Telefone</label>
+                  <input type="tel" class="form-control" id="phone" name="phone" placeholder="(00) 00000-0000">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="text-black" for="email">Email</label>
+              <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+              <label class="text-black" for="message">Mensagem</label>
+              <textarea class="form-control" id="message" name="message" cols="30" rows="5" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Enviar</button>
+          </form>
+        </div>
+        <div class="col-lg-5 ml-auto">
+          <div class="quick-contact-item d-flex align-items-center mb-4">
+            <span class="flaticon-house"></span>
+            <address class="text">
+              Travessa Therezinha Sherman  Lot. Praia Baia Formosa, Búzios  RJ, 28950-000
+            </address>
+          </div>
+          <div class="quick-contact-item d-flex align-items-center mb-4">
+            <span class="flaticon-phone-call"></span>
+            <address class="text">
+              +55 (31) 99345-1178 <br>+55 (21) 96668-2770
+            </address>
+          </div>
+          <div class="quick-contact-item d-flex align-items-center mb-4">
+            <span class="flaticon-mail"></span>
+            <address class="text">
+              solemarbuziospousada@gmail.com
+            </address>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+	<div class="site-footer">
+		<div class="inner first">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 col-lg-4">
+						<div class="widget">
+							<h3 class="heading">Sobre</h3>
+							<p>Na Dash Boat Tour, não apenas organizamos passeios de barco; criamos memórias que duram uma vida. Nossa missão é unir luxo e aventura, proporcionando experiências aquáticas extraordinárias. Nossa paixão pelo mar e pelo serviço excepcional define cada viagem que realizamos.</p>
+						</div>
+						
+					</div>
+					<div class="col-md-6 col-lg-2 pl-lg-5">
+						<div class="widget">
+							<h3 class="heading">Pages</h3>
+							<ul class="links list-unstyled">
+								<li><a href="#">Sobre</a></li>
+								<li><a href="#">Contato</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-2">
+						<div class="widget">
+						
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-4">
+						<div class="widget">
+							<h3 class="heading">Contato</h3>
+							<ul class="list-unstyled quick-info links">
+                <li class="phone"><a href="#">+55 (31) 99345-1178  <br>  +55 (21) 96668-2770</a></li>
+								<li class="email"><a href="#">solemarbuziospousada@gmail.com</a></li>
+								<li class="address"><a href="#">Travessa Therezinha Sherman - Lot. Praia Baia Formosa, Búzios - RJ, 28950-000</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="inner dark">
+			<div class="container">
+				<div class="row text-center">
+					<div class="col-md-8 mb-3 mb-md-0 mx-auto">
+						<p> Website and Design &copy;<script>document.write(new Date().getFullYear());</script> Lucas Leão
+						</p>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+  <div id="overlayer"></div>
+  <div class="loader">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.fancybox.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="js/message-system.js"></script>
+  <script src="js/custom.js"></script>
+  <script src="js/form-validation.js"></script>
+  <script src="js/image-optimizer.js"></script>
+  <script>
+    // Inicializar sistema de mensagens
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.messageSystem) {
+        window.messageSystem.init();
+      }
+    });
+  </script>
+
+</body>
+
+</html>

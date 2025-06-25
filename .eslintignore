@@ -1,0 +1,20 @@
+# Ignorar arquivos de bibliotecas de terceiros que não devem ser lintados
+js/bootstrap.min.js
+js/jquery-3.4.1.min.js
+js/popper.min.js
+js/owl.carousel.min.js
+js/jquery.waypoints.min.js
+js/jquery.fancybox.min.js
+js/jquery.animateNumber.min.js
+js/typed.js
+
+# Ignorar o diretório node_modules (embora o ESLint geralmente já faça isso)
+node_modules/
+
+dist
+
+logs
+
+backups
+
+data 

@@ -1,0 +1,67 @@
+[
+  {
+    "id": 301,
+    "name": "Marina Souza",
+    "email": "marina.souza@example.com",
+    "phone": "(22) 90000-0011",
+    "destination": "Cabo Frio",
+    "date": "2024-08-11",
+    "guests": 2,
+    "status": "confirmada",
+    "timestamp": "2024-06-22T12:10:00.000Z",
+    "ip": "127.0.0.1",
+    "mensagem": "Gostaria de saber se há desconto para casal."
+  },
+  {
+    "id": 303,
+    "name": "Patrícia Gomes",
+    "email": "patricia.gomes@example.com",
+    "phone": "(24) 90000-0013",
+    "destination": "Arraial do Cabo",
+    "date": "2024-08-13",
+    "guests": 4,
+    "status": "confirmada",
+    "timestamp": "2024-06-22T12:30:00.000Z",
+    "ip": "127.0.0.1",
+    "mensagem": "Reserva para família, crianças inclusas."
+  },
+  {
+    "id": 305,
+    "name": "Fernanda Castro",
+    "email": "fernanda.castro@example.com",
+    "phone": "(26) 90000-0015",
+    "destination": "Cabo Frio",
+    "date": "2024-08-15",
+    "guests": 2,
+    "status": "pendente",
+    "timestamp": "2024-06-22T12:50:00.000Z",
+    "ip": "127.0.0.1",
+    "mensagem": "Lua de mel, algo especial?"
+  },
+  {
+    "id": 307,
+    "name": "Aline Rocha",
+    "email": "aline.rocha@example.com",
+    "phone": "(28) 90000-0017",
+    "destination": "Arraial do Cabo",
+    "date": "2024-08-17",
+    "guests": 3,
+    "status": "confirmada",
+    "timestamp": "2024-06-22T13:10:00.000Z",
+    "ip": "127.0.0.1",
+    "mensagem": "Tem opção de alimentação vegetariana?"
+  },
+  {
+    "id": 309,
+    "name": "Camila Teixeira",
+    "email": "camila.teixeira@example.com",
+    "phone": "(30) 90000-0019",
+    "destination": "Cabo Frio",
+    "date": "2024-08-19",
+    "guests": 2,
+    "status": "confirmada",
+    "timestamp": "2024-06-22T13:30:00.000Z",
+    "ip": "127.0.0.1",
+    "mensagem": "Tem estacionamento próximo ao embarque?"
+  }
+]

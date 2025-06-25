@@ -1,0 +1,559 @@
+<!-- /*
+* Template Name: Dash Boat Tour
+* Template Author: Lucas Leão
+* Template URI: https://dashboattour.com/
+* License: https://creativecommons.org/licenses/by/3.0/
+*/ -->
+<!doctype html>
+<html lang="pt-BR">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Dash Boat Tour">
+	<meta name="description" content="Dash Boat Tour - Passeios náuticos exclusivos em destinos paradisíacos">
+	<meta name="keywords" content="passeio de barco, turismo náutico, viagem, aventura">
+	<meta name="robots" content="index, follow">
+	
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://dashboattour.com/">
+	<meta property="og:title" content="Dash Boat Tour - Passeios de Luxo em Búzios">
+	<meta property="og:description" content="Experiências marítimas inesquecíveis com passeios de barco de luxo em Búzios, Cabo Frio e Arraial do Cabo.">
+	<meta property="og:image" content="https://dashboattour.com/images/hero-slider-1.webp">
+
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:url" content="https://dashboattour.com/">
+	<meta property="twitter:title" content="Dash Boat Tour - Passeios de Luxo em Búzios">
+	<meta property="twitter:description" content="Experiências marítimas inesquecíveis com passeios de barco de luxo em Búzios, Cabo Frio e Arraial do Cabo.">
+	<meta property="twitter:image" content="https://dashboattour.com/images/hero-slider-1.webp">
+
+	<link rel="shortcut icon" href="favicon.png">
+	<link rel="canonical" href="https://dashboattour.com/">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/owl.carousel.min.css">
+	<link rel="stylesheet" href="css/owl.theme.default.min.css">
+	<link rel="stylesheet" href="css/jquery.fancybox.min.css">
+	<link rel="stylesheet" href="fonts/icomoon/style.css">
+	<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+	<link rel="stylesheet" href="css/style.css">
+
+	<title>Dash Boat Tour - Passeios de Luxo em Búzios, Cabo Frio e Arraial do Cabo</title>
+
+	<!-- Preload de recursos críticos -->
+	<link rel="preload" href="css/bootstrap.min.css" as="style">
+	<link rel="preload" href="css/style.css" as="style">
+	<link rel="preload" href="js/jquery-3.4.1.min.js" as="script">
+	
+	<!-- DNS prefetch para recursos externos -->
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+</head>
+
+<body>
+
+	<div class="site-mobile-menu site-navbar-target">
+		<div class="site-mobile-menu-header">
+			<div class="site-mobile-menu-close">
+				<span class="icofont-close js-menu-toggle"></span>
+			</div>
+		</div>
+		<div class="site-mobile-menu-body"></div>
+	</div>
+
+
+	 <nav class="site-nav">
+		<div class="container">
+			<div class="site-navigation" >
+				<div class="row">
+					<div class="col-sm-8 col-md-8  d-flex align-items-center">
+						<img src="images/logo.png" alt="Logo Dash Boat Tour" class="logo-img" height=" 35px">
+						<a href="index.html" class="logo m-0 .d-sm-none .d-md-block">Dash Boat Tour <span class="text-primary">.</span></a>
+
+					</div>
+					<div class="col-sm-4 col-md-4  d-flex justify-content-end">
+						<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu ">
+							<li class="active"><a href="index.html">Início</a></li>
+							<li><a href="about.html">Sobre</a></li>
+							<li><a href="contact.html">Contato</a></li>
+						</ul>
+						<a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
+							<span></span>
+						</a>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</nav>
+
+
+	<div class="hero">
+		<div class="slides">
+			<img src="images/one.webp" alt="Passeio de barco em Búzios - Dash Boat Tour" class="img-fluid active" loading="lazy">
+			<img src="images/two.webp" alt="Experiência marítima em Cabo Frio" class="img-fluid" loading="lazy">
+			<img src="images/three.webp" alt="Aventura aquática em Arraial do Cabo" class="img-fluid" loading="lazy">
+		</div>
+		<div class="container h-100">
+			<div class="row h-100 justify-content-start align-items-center">
+				<div class="col-lg-7">
+					<div class="intro-wrap  ">
+						<div class="d-sm-block d-md-none xpp"></div>
+						<h1 class="mb-5 text-white"><span class="d-block">Deixe-se encantar</span>por <span class="typed-words"></span></h1>
+						<div class="row justify-content-center align-items-center">
+							<div class="col-12">
+								<div id="reserva"></div>
+								<form class="form" id="reservationForm">
+									<div class="row mb-2">
+										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-6">
+											<select name="destination" id="destination" class="form-control custom-select" required>
+												<option value="">Selecione o Destino</option>
+												<option value="Armação de Búzios">Armação de Búzios</option>
+												<option value="Cabo Frio">Cabo Frio</option>
+												<option value="Arraial do Cabo">Arraial do Cabo</option>
+											</select>
+										</div>
+										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-6">
+											<input type="date" class="form-control" name="date" id="date" required>
+										</div>
+									</div>
+									<div class="row mb-2">
+										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-6">
+											<input type="text" class="form-control" name="name" id="name" placeholder="Seu nome completo" required>
+										</div>
+										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-6">
+											<input type="email" class="form-control" name="email" id="email" placeholder="Seu email" required>
+										</div>
+									</div>
+									<div class="row mb-2">
+										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-6">
+											<input type="tel" class="form-control" name="phone" id="phone" placeholder="Seu telefone" required>
+										</div>
+										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-6">
+											<select name="guests" id="guests" class="form-control custom-select" required>
+												<option value="">Número de pessoas</option>
+												<option value="1">1 pessoa</option>
+												<option value="2">2 pessoas</option>
+												<option value="3">3 pessoas</option>
+												<option value="4">4 pessoas</option>
+												<option value="5">5 pessoas</option>
+												<option value="6">6 pessoas</option>
+												<option value="7+">7+ pessoas</option>
+											</select>
+										</div>
+									</div>
+									<div class="row mb-2">
+										<div class="col-12">
+											<textarea class="form-control" name="message" id="message" rows="3" placeholder="Mensagem adicional (opcional)"></textarea>
+										</div>
+									</div>
+									<div class="row align-items-center">
+										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-4">
+											<button type="submit" class="btn btn-primary btn-block" id="submitBtn">Fazer Reserva</button>
+										</div>
+										<div class="col-lg-8">
+											<label class="control control--checkbox mt-3">
+												<span class="caption">Concordo com os termos e condições</span>
+												<input type="checkbox" name="terms" id="terms" required />
+												<div class="control__indicator"></div>
+											</label>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="untree_co-section">
+		<div class="container">
+			<div class="row mb-5 justify-content-center">
+				<div class="col-lg-6 text-center">
+					<h2 class="section-title text-center mb-3">Embarque em uma Aventura Inesquecível com a Dash Boat Tour. </h2>
+					<p>Descubra paisagens deslumbrantes e experiências exclusivas.</p>
+					<p>
+						<a href="#reserva" class="btn btn-primary">Agende agora !</a>
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-4 ">
+					<div class="frame h-100">
+						<div class="feature-img-bg h-100 feature-img-bg-1" aria-label="Imagem de fundo - Passeio marítimo">
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-8">
+					<div class="row">
+						<div class="col-sm-12 col-md-6 ">
+							<div class="feature-1 ">
+								<div class="align-self-center">
+									<span class="flaticon-swimming display-4 text-primary"></span>
+									<h3>Passeios Exclusivos</h3>
+									<p class="mb-0">Embarque em passeios unicos com a <strong>Dash Boat Tour</strong>, onde luxo e aventura se encontram. Navegue por águas cristalinas, explore ilhas paradisíacas, viva experiências únicas com todo o conforto e elegância que você merece.</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-md-6">
+							<div class="feature-1">
+								<div class="align-self-center">
+									<span class="flaticon-restaurant display-4 text-primary"></span>
+									<h3>Gastronomia à Bordo</h3>
+									<p class="mb-0">Experimente uma seleção requintada de pratos locais e internacionais enquanto navega. Nossa gastronomia combina sabores autênticos com vistas espetaculares, proporcionando uma experiência culinária única em alto-mar.
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-md-6">
+							<div class="feature-1 ">
+								<div class="align-self-center">
+									<span class="flaticon-playground display-4 text-primary"></span>
+									<h3>Conexão com a Natureza</h3>
+									<p class="mb-0">Conecte-se com a beleza deslumbrante da natureza em nossos passeios. Descubra paisagens incríveis, mergulhe na biodiversidade marinha e sinta a tranquilidade das águas. Nossas viagens são uma celebração da natureza em sua forma mais pura.</p>
+								</div>
+							</div>
+		
+						</div>
+						<div class="col-sm-12 col-md-6">
+							<div class="feature-1">
+								<div class="align-self-center">
+									<span class="flaticon-phone-call display-4 text-primary"></span>
+									<h3>Suporte Total</h3>
+									<p class="mb-0">Com nosso suporte dedicado disponível 24/7, garantimos uma viagem sem preocupações. Do planejamento aos momentos a bordo, nossa equipe está pronta para atender todas as suas necessidades, assegurando uma experiência perfeita e memorável.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				
+
+			</div>
+			
+		</div>
+	</div>
+
+
+
+
+	<div class="untree_co-section">
+		<div class="container">
+			<div class="row text-center justify-content-center mb-5">
+				<div class="col-lg-7"><h2 class="section-title text-center">Destinos</h2></div>
+			</div>
+
+			<div class="owl-carousel owl-3-slider">
+
+				<div class="item">
+					<a class="media-thumb" href="images/hero-slider-1.webp" data-fancybox="gallery">
+						<div class="media-text">
+							<h3>Arraial do Cabo</h3>
+							<span class="location"></span>
+						</div>
+						<img src="images/hero-slider-1.webp" alt="Passeio de barco em Arraial do Cabo - Dash Boat Tour" class="img-fluid">
+						<div class="media-description">
+						
+						</div>
+					</a> 
+				</div>
+
+				<div class="item">
+					<a class="media-thumb" href="images/hero-slider-2.webp" data-fancybox="gallery">
+						<div class="media-text">
+							<h3>Cabo-Frio</h3>
+							<span class="location"></span>
+						</div>
+						<img src="images/hero-slider-2.webp" alt="Experiência marítima em Cabo Frio - Dash Boat Tour" class="img-fluid">
+					</a> 
+				</div>
+
+				<div class="item">
+					<a class="media-thumb" href="images/hero-slider-3.webp" data-fancybox="gallery">
+						<div class="media-text">
+							<h3>Búzios</h3>
+							<span class="location"></span>
+						</div>
+						<img src="images/hero-slider-3.webp" alt="Passeio de barco em Búzios - Dash Boat Tour" class="img-fluid">
+					</a> 
+				</div>
+
+				<div class="item">
+					<a class="media-thumb" href="images/hero-slider-4.webp" data-fancybox="gallery">
+						<div class="media-text">
+							<h3>Arraial do Cabo</h3>
+							<span class="location"></span>
+						</div>
+						<img src="images/hero-slider-4.webp" alt="Experiência marítima em Arraial do Cabo - Dash Boat Tour" class="img-fluid">
+					</a> 
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+
+
+	<div class="untree_co-section">
+		<div class="container">
+			<div class="row justify-content-center text-center mb-5">
+				<div class="col-lg-6">
+					<h2 class="section-title text-center mb-3">Jet-Ski</h2>
+					<p>Desperte sua alma aventureira com nossos passeios dinâmicos de jet ski. Imagine-se cortando as águas azuis cristalinas, com o sol brilhando acima e a brisa do mar refrescando seu espírito. Nossos jet skis são a fusão perfeita de potência e estabilidade, oferecendo a você uma experiência segura, mas eletrizante. Perfeito para entusiastas de esportes aquáticos e para aqueles que buscam adicionar um toque de aventura e liberdade às suas férias. Venha sentir a emoção de estar no comando, enquanto explora as belezas naturais do litoral de uma maneira única e memorável.</p>
+					<p><a href="contact.html" class="btn btn-primary">Entre em Contato !</a></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+					<div class="media-1">
+						<a href="#" class="d-block mb-3"><img src="images/jet1.webp" alt="Image" class="img-fluid"></a>
+						<span class="d-flex align-items-center loc mb-2">							
+						</span>
+						<div class="d-flex align-items-center">
+							<div>								
+								<div class="price ml-auto">
+									
+								</div>
+							</div>
+							
+						</div>
+						
+					</div>
+				</div>
+				<div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+					<div class="media-1">
+						<a href="#" class="d-block mb-3"><img src="images/jet2.webp" alt="Image" class="img-fluid"></a>
+						<span class="d-flex align-items-center loc mb-2">							
+						</span>
+						<div class="d-flex align-items-center">
+							<div>
+							
+								<div class="price ml-auto">
+									
+								</div>
+							</div>
+							
+						</div>
+						
+					</div>
+				</div>
+				<div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+					<div class="media-1">
+						<a href="#" class="d-block mb-3"><img src="images/jet3.webp" alt="Image" class="img-fluid"></a>
+						<span class="d-flex align-items-center loc mb-2">
+							
+						<div class="d-flex align-items-center">
+							
+							
+						</div>
+						
+					</div>
+				</div>
+				<div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+					<div class="media-1">
+						<a href="#" class="d-block mb-3"><img src="images/jet4.webp" alt="Image" class="img-fluid"></a>
+
+						<span class="d-flex align-items-center loc mb-2">
+							
+						<div class="d-flex align-items-center">
+							<div>
+								
+								</div>
+							</div>
+							
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="untree_co-section">
+		<div class="container">
+			<div class="row justify-content-between align-items-center">
+				
+				<div class="col-lg-6">
+					<figure class="img-play-video">
+						<a id="play-video" class="video-play-button" href="https://youtu.be/7it6mdGz5GQ?si=ci2vycOr7eyGV4Pc&t=4" data-fancybox>
+							<span></span>
+						</a>
+						<img src="images/hero-slider-2.webp
+						" alt="Image" class="img-fluid rounded-20">
+					</figure>
+				</div>
+
+				<div class="col-lg-5">
+					<h2 class="section-title text-left mb-4">Embarque em uma jornada inesquecível com a Dash Boat Tour </h2>
+					<p> Para os deslumbrantes destinos de Búzios, Cabo-Frio e Arraial do Cabo. Descubra Búzios, com suas praias encantadoras e vida noturna vibrante, mergulhe nas águas serenas de Cabo-Frio e maravilhe-se com a beleza subaquática de Arraial do Cabo. 
+					</p>
+
+					<p class="mb-4">Cada local promete experiências mágicas - desde mergulhos em águas cristalinas repletas de vida marinha até momentos de relaxamento sob o sol tropical. Ideal para os apaixonados por aventuras marítimas e descobertas naturais.</p>
+
+					<ul class="list-unstyled two-col clearfix">
+						<li>Mergulho com Snorkel</li>
+						<li>Aulas de Mergulho</li>
+						<li>Piqueniques na Praia</li>
+						<li>Festas no Barco</li>
+						<li>Refeições de Luxo</li>
+						<li>Spa e Bem-Estar</li>
+						<li>Yoga e Meditação</li>
+						<li>Stand Up Paddle</li>
+						<li>Grutas e Cavernas</li>
+						<li>Cursos de Fotografia Subaquática</li>
+					</ul>
+
+					<p><a href="#reserva" class="btn btn-primary">Faça sua reserva agora!</a></p>
+
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+	
+	<div class="py-5 cta-section">
+		<div class="container">
+			<div class="row text-center">
+				<div class="col-md-12">
+					<h2 class="mb-2 text-white">Pronto para a Aventura dos Seus Sonhos?</h2>
+					<p class="mb-4 lead text-white text-white-opacity">Contate a Dash Boat Tour pelo WhatsApp agora e reserve facilmente sua experiência marítima. Luxo, natureza e momentos memoráveis estão a apenas uma mensagem de distância.</p>
+					<p class="mb-0"><a href="#reserva" class="btn btn-outline-white text-white btn-md font-weight-bold">Agende agora sua experiência única !</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="site-footer">
+		<div class="inner first">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 col-lg-4">
+						<div class="widget">
+							<h3 class="heading">Sobre</h3>
+							<p>Na Dash Boat Tour, não apenas organizamos passeios de barco; criamos memórias que duram uma vida. Nossa missão é unir luxo e aventura, proporcionando experiências aquáticas extraordinárias. Nossa paixão pelo mar e pelo serviço excepcional define cada viagem que realizamos.</p>
+						</div>
+						<div class="widget">
+							<ul class="list-unstyled social">
+								<li><a href="#"><span class="icon-twitter"></span></a></li>
+								<li><a href="#"><span class="icon-instagram"></span></a></li>
+								<li><a href="#"><span class="icon-facebook"></span></a></li>
+								<li><a href="#"><span class="icon-linkedin"></span></a></li>
+								<li><a href="#"><span class="icon-dribbble"></span></a></li>
+								<li><a href="#"><span class="icon-pinterest"></span></a></li>
+								<li><a href="#"><span class="icon-apple"></span></a></li>
+								<li><a href="#"><span class="icon-google"></span></a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-2 pl-lg-5">
+						<div class="widget">
+							<h3 class="heading">Pages</h3>
+							<ul class="links list-unstyled">
+								<li><a href="#">Blog</a></li>
+								<li><a href="#">About</a></li>
+								<li><a href="#">Contact</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-2">
+						<div class="widget">
+						
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-4">
+						<div class="widget">
+							<h3 class="heading">Contato</h3>
+							<ul class="list-unstyled quick-info links">
+								<li class="email"><a href="#">solemarbuziospousada@gmail.com</a></li>
+								<li class="phone"><a href="#">+55 (31) 99345-1178  /  +55 (21) 96668-2770</a></li>
+								<li class="address"><a href="#">Travessa Therezinha Sherman - Lot. Praia Baia Formosa, Búzios - RJ, 28950-000</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="inner dark">
+			<div class="container">
+				<div class="row text-center">
+					<div class="col-md-8 mb-3 mb-md-0 mx-auto">
+						<p> Website and Design &copy;<script>document.write(new Date().getFullYear());</script> Lucas Leão
+						</p>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="overlayer"></div>
+	<div class="loader">
+		<div class="spinner-border" role="status">
+			<span class="sr-only">Loading...</span>
+		</div>
+	</div>
+
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/jquery.animateNumber.min.js"></script>
+	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="js/jquery.fancybox.min.js"></script>
+	<script src="js/message-system.js"></script>
+	<script src="js/custom.js"></script>
+	<script src="js/typed.js"></script>
+	<script src="js/reservation.js"></script>
+	<script>
+		// Inicializar sistema de mensagens
+		document.addEventListener('DOMContentLoaded', function() {
+			if (window.messageSystem) {
+				window.messageSystem.init();
+			}
+		});
+
+		$(function() {
+			var slides = $('.slides'),
+			images = slides.find('img');
+
+			images.each(function(i) {
+				$(this).attr('data-id', i + 1);
+			})
+
+			var typed = new Typed('.typed-words', {
+				strings: ["Búzios."," Cabo-Frio."," Arraial do Cabo."],
+				typeSpeed: 125,
+				backSpeed: 125,
+				backDelay: 3000,
+				startDelay: 1000,
+				loop: true,
+				showCursor: true,
+				preStringTyped: (arrayPos, self) => {
+					arrayPos++;
+					console.log(arrayPos);
+					$('.slides img').removeClass('active');
+					$('.slides img[data-id="'+arrayPos+'"]').addClass('active');
+				}
+
+			});
+		})
+	</script>
+
+</body>
+
+</html>

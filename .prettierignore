@@ -1,0 +1,39 @@
+# Ignore backups
+/backups/
+
+# Ignore dependencies
+/node_modules/
+
+# Ignore package-lock.json
+package-lock.json
+
+# Ignore build files or vendor libraries
+/css/bootstrap.min.css
+/css/jquery.fancybox.min.css
+/css/owl.carousel.min.css
+/fonts/
+/js/bootstrap.min.js
+/js/jquery-3.4.1.min.js
+/js/jquery.fancybox.min.js
+/js/jquery.sticky.js
+/js/owl.carousel.min.js
+/js/popper.min.js
+/js/typed.js
+
+# Ignore images and screenshots
+/images/
+/screenshots/
+
+# HTML files
+*.html
+
+# Build output
+dist
+
+# Logs
+logs
+
+# Backups e dados locais
+backups
+data
+scss/ 

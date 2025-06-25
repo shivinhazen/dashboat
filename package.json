@@ -1,0 +1,87 @@
+{
+  "name": "dashboat-tour",
+  "version": "1.0.0",
+  "description": "Site institucional da Dash Boat Tour - Passeios de barco de luxo em Búzios, Cabo Frio e Arraial do Cabo",
+  "main": "js/server.js",
+  "scripts": {
+    "start": "node js/server.js",
+    "start:test": "cross-env NODE_ENV=test node js/server.js",
+    "dev": "nodemon js/server.js",
+    "test": "jest",
+    "lint": "eslint js/*.js",
+    "lint:fix": "eslint js/*.js --fix",
+    "format": "prettier --write .",
+    "build": "node build-simple.js",
+    "deploy": "npm run build && echo 'Build concluído! Faça push para o GitHub para deploy automático.'",
+    "prepare": "husky",
+    "setup:mcp": "node setup-mcp.js",
+    "setup:cursor": "node setup-cursor-mcp.js",
+    "mcp:install": "npm install -g @browsermcp/mcp @21st-dev/magic bytefun-ai-mcp mcp-server-filesystem",
+    "mcp:check": "npm list -g @browsermcp/mcp @21st-dev/magic bytefun-ai-mcp mcp-server-filesystem",
+    "mcp:status": "node check-mcp-status.js",
+    "bundle": "webpack --mode production",
+    "bundle:dev": "webpack serve --mode development"
+  },
+  "keywords": [
+    "turismo",
+    "passeio-barco",
+    "buzios",
+    "cabo-frio",
+    "arraial-cabo",
+    "luxo",
+    "maritimo"
+  ],
+  "author": "Lucas Leão",
+  "license": "MIT",
+  "dependencies": {
+    "@sentry/node": "^9.30.0",
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.5.1",
+    "helmet": "^7.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "nodemailer": "^6.9.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.27.4",
+    "@babel/preset-env": "^7.27.2",
+    "babel-loader": "^10.0.0",
+    "clean-css": "^5.3.3",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.5.1",
+    "husky": "^9.1.7",
+    "jest": "^30.0.2",
+    "lighthouse": "^12.6.1",
+    "lint-staged": "^16.1.2",
+    "nodemon": "^3.0.1",
+    "playwright": "^1.53.1",
+    "prettier": "^3.6.1",
+    "puppeteer": "^24.10.2",
+    "supertest": "^7.1.1",
+    "terser": "^5.43.1",
+    "webpack": "^5.99.9",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.2"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shivinhazen/dashboat-tour.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shivinhazen/dashboat-tour/issues"
+  },
+  "homepage": "https://github.com/shivinhazen/dashboat-tour#readme",
+  "lint-staged": {
+    "*.{js,json,css,md,scss}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  }
+}
