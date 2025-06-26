@@ -33,6 +33,8 @@ if (process.env.NODE_ENV !== 'test') {
 // Servir arquivos estáticos da raiz do projeto
 const staticPath = path.join(__dirname, '../');
 app.use(express.static(staticPath));
+// Garantir que /fonts seja servido corretamente
+app.use('/fonts', express.static(path.join(__dirname, '../fonts')));
 
 // Middleware para validação de entrada
 const validateInput = (req, res, next) => {

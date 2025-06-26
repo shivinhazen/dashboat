@@ -44,14 +44,17 @@ const helmetConfig = helmet({
 
 // Configuração do CORS
 const allowedOrigins = [
-  config.cors.origin,
+  'https://dashboat-production.up.railway.app',
   'http://localhost:5000',
   'http://127.0.0.1:5000',
+  'http://localhost:8080',
+  'http://127.0.0.1:8080',
 ].filter(Boolean);
 
 const corsOptions = {
   origin: function (origin, callback) {
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+    console.log('Origem recebida para CORS:', origin);
+    if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
       callback(

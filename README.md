@@ -1,4 +1,4 @@
-# 🚤 Dash Boat Tour
+# Dash Boat Tour
 
 [![Deploy on Railway](https://img.shields.io/badge/Deploy-Railway-blue?logo=railway)](https://railway.app/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
@@ -7,7 +7,7 @@ Site institucional para reservas de passeios de barco de luxo em Búzios, Cabo F
 
 ---
 
-## 📑 Índice
+## Índice
 - [Visão Geral](#visão-geral)
 - [Acesse Online (Recrutadores)](#acesse-online-recrutadores)
 - [Funcionalidades](#funcionalidades)
@@ -25,12 +25,12 @@ Site institucional para reservas de passeios de barco de luxo em Búzios, Cabo F
 
 ---
 
-## 🎯 Visão Geral
+## Visão Geral <!-- visão-geral -->
 O Dash Boat Tour é um site institucional responsivo para reservas de passeios de barco de luxo, com painel administrativo, otimização de imagens, segurança e automação de backups. O projeto foi desenvolvido para promover experiências marítimas inesquecíveis, focando em usabilidade, performance e segurança.
 
 ---
 
-## 🌐 Acesse Online (Recrutadores)
+## Acesse Online (Recrutadores) <!-- acesse-online-recrutadores -->
 > **Acesse a versão online do projeto, sem precisar instalar nada localmente:**
 >
 > [https://dashboat-tour-production.up.railway.app/](https://dashboat-tour-production.up.railway.app/) <!-- Substitua pelo link real do Railway após o deploy -->
@@ -39,7 +39,7 @@ O Dash Boat Tour é um site institucional responsivo para reservas de passeios d
 
 ---
 
-## ✨ Funcionalidades
+## Funcionalidades <!-- funcionalidades -->
 - Página institucional responsiva
 - Formulário de reserva com validação
 - Painel administrativo para gestão de reservas e contatos
@@ -50,7 +50,7 @@ O Dash Boat Tour é um site institucional responsivo para reservas de passeios d
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas <!-- tecnologias-utilizadas -->
 - **Node.js** (backend)
 - **Express**
 - **JavaScript** (ES6+)
@@ -65,7 +65,7 @@ O Dash Boat Tour é um site institucional responsivo para reservas de passeios d
 
 ---
 
-## 🧰 Ferramentas de Qualidade e Monitoramento
+## Ferramentas de Qualidade e Monitoramento <!-- ferramentas-de-qualidade-e-monitoramento -->
 - **ESLint** e **Prettier**: Garantem código limpo e padronizado.
 - **Husky** + **lint-staged**: Executam lint e formatação automaticamente nos commits.
 - **Sentry**: Monitoramento de erros em produção.
@@ -76,7 +76,7 @@ O Dash Boat Tour é um site institucional responsivo para reservas de passeios d
 
 ---
 
-## 📜 Scripts NPM Úteis
+## Scripts NPM Úteis <!-- scripts-npm-úteis -->
 - `npm run dev` — Desenvolvimento com hot reload (Nodemon)
 - `npm start` — Inicia o servidor em produção
 - `npm run build` — Gera build otimizado em `dist/`
@@ -89,7 +89,7 @@ O Dash Boat Tour é um site institucional responsivo para reservas de passeios d
 
 ---
 
-## 🏗️ Arquitetura e Organização
+## Arquitetura e Organização <!-- arquitetura-e-organização -->
 - **Estrutura modular**: Separação clara entre backend (`js/`), frontend (`src/js/`), middlewares, services, configs e rotas.
 - **Services**: Serviços para dados, e-mail e logs.
 - **Middlewares**: Autenticação, segurança e validação.
@@ -100,7 +100,7 @@ O Dash Boat Tour é um site institucional responsivo para reservas de passeios d
 
 ---
 
-## 📋 Pré-requisitos
+## Pré-requisitos <!-- pré-requisitos -->
 - **Node.js** v18+ (recomendado)
 - **npm** v9+
 - (Opcional) Conta de e-mail para envio de notificações
@@ -108,7 +108,7 @@ O Dash Boat Tour é um site institucional responsivo para reservas de passeios d
 
 ---
 
-## 🚀 Instalação e Uso Local (Desenvolvedores)
+## Instalação e Uso Local (Desenvolvedores) <!-- instalação-e-uso-local-desenvolvedores -->
 > **Atenção:** Recrutadores não precisam instalar localmente. Use o link online acima!
 
 1. **Clone o repositório:**
@@ -132,7 +132,7 @@ O Dash Boat Tour é um site institucional responsivo para reservas de passeios d
 
 ---
 
-## 🧪 Testes Automatizados
+## Testes Automatizados <!-- testes-automatizados -->
 - Execute os testes com:
   ```bash
   npm test
@@ -141,14 +141,14 @@ O Dash Boat Tour é um site institucional responsivo para reservas de passeios d
 
 ---
 
-## 📦 Build e Deploy
+## Build e Deploy <!-- build-e-deploy -->
 - O build copia arquivos para a pasta `dist/`.
 - Deploy automatizado via Railway (ver `railway.json`).
 - Healthcheck e restart automático configurados para produção.
 
 ---
 
-## 🤝 Contribuição
+## Contribuição <!-- contribuição -->
 Pull requests são bem-vindos! Para contribuir:
 1. Faça um fork do projeto
 2. Crie uma branch (`git checkout -b feature/nome-da-feature`)
@@ -160,12 +160,12 @@ Siga o padrão de código, escreva testes e descreva claramente suas mudanças.
 
 ---
 
-## 📄 Licença
+## Licença <!-- licença -->
 MIT. Veja o arquivo [LICENSE](./LICENSE).
 
 ---
 
-## 👤 Contato
+## Contato <!-- contato -->
 - Lucas Leão — [LinkedIn](https://www.linkedin.com/in/lucasleao)
 - E-mail: lucasleaobcmt@gmail.com
 
