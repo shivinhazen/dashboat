@@ -593,11 +593,24 @@ class AdminPanel {
       .join('');
   }
 
+  showLoading(selector) {
+    const element =
+      typeof selector === 'string'
+        ? document.querySelector(selector)
+        : selector;
+    if (element) {
+      element.innerHTML = `
+        <div class="loading">
+          <div class="spinner"></div>
+          <span>Carregando...</span>
+        </div>
+      `;
+    }
+  }
+
   async loadReservations(filters) {
     if (!this.isAuthenticated || !this.authToken) return;
-    // Se não passar filtros, usa os atuais
     if (!filters) filters = this.currentFilters || {};
-    // Salva os filtros atuais
     this.currentFilters = { ...filters };
     try {
       let url = '/api/reservations';
@@ -607,13 +620,14 @@ class AdminPanel {
       if (filters.destination)
         params.push(`destination=${encodeURIComponent(filters.destination)}`);
       if (params.length) url += '?' + params.join('&');
+      // Mostra loading apenas na tabela
+      this.showLoading('#reservationsList .table-responsive');
       const response = await fetch(url, {
         headers: this.addAuthHeaders(),
         cache: 'no-store',
       });
       const data = await response.json();
       if (data.success) {
-        this.showLoading('reservationsList');
         this.displayReservations(data.reservations);
       } else {
         this.showError('Erro ao carregar reservas');
@@ -621,18 +635,6 @@ class AdminPanel {
     } catch (error) {
       console.error('Erro ao carregar reservas:', error);
       this.showError('Erro ao carregar reservas');
-    }
-  }
-
-  showLoading(elementId) {
-    const element = document.getElementById(elementId);
-    if (element) {
-      element.innerHTML = `
-            <div class="loading">
-                <div class="spinner"></div>
-                <span>Carregando...</span>
-            </div>
-        `;
     }
   }
 
@@ -719,7 +721,6 @@ class AdminPanel {
         .join('');
     }
     tableHTML += `</tbody></table></div>`;
-    reservationsList.innerHTML = tableHTML;
 
     // Reatribuir eventos do filtro
     const filterBtn = document.getElementById('filterDropdownBtn');
@@ -771,6 +772,47 @@ class AdminPanel {
         window.adminPanel.currentFilters = {};
         window.adminPanel.loadReservations({});
       });
+    }
+
+    // Preencher tabela (desktop)
+    const tableContainer = document.querySelector(
+      '#reservationsList .table-responsive'
+    );
+    if (tableContainer) {
+      tableContainer.innerHTML = tableHTML;
+    }
+    // Preencher cards responsivos (mobile)
+    const cardsContainer = document.querySelector(
+      '#reservationsList .reservation-cards-list'
+    );
+    if (cardsContainer) {
+      if (!reservations || reservations.length === 0) {
+        cardsContainer.innerHTML = `<div class="reservation-card">Nenhuma reserva encontrada.</div>`;
+      } else {
+        cardsContainer.innerHTML = reservations
+          .map(normalizeGuests)
+          .map(reservation => {
+            const guests = reservation.guests || 0;
+            const guestsLabel = `${guests} ${guests == 1 ? 'pessoa' : 'pessoas'}`;
+            return `
+              <div class="activity-item reservation-activity-item" data-reservation-id="${reservation.id}" style="display: flex; align-items: stretch;">
+                <div class="activity-icon"><i class="fas fa-ship"></i></div>
+                <div class="activity-content" style="flex:1; display: flex; flex-direction: column; justify-content: center;">
+                  <div class="reservation-row-top" style="font-weight: 600; color: #1e293b; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${this.escapeHtml(reservation.name)}</div>
+                  <div class="reservation-row-bottom" style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.95em; margin-top: 2px;">
+                    <span class="text-muted"><i class="fas fa-calendar-alt"></i> ${reservation.date ? new Date(reservation.date).toLocaleDateString('pt-BR') : '-'}</span>
+                    <span class="text-muted"><i class="fas fa-map-marker-alt"></i> ${this.escapeHtml(reservation.destination)}</span>
+                    <span class="text-muted"><i class="fas fa-user-friends"></i> ${guestsLabel}</span>
+                  </div>
+                </div>
+                <div class="reservation-status-col" style="display: flex; align-items: center; justify-content: flex-end; min-width: 90px;">
+                  <span class="status-badge status-${reservation.status}">${this.getStatusText(reservation.status)}</span>
+                </div>
+              </div>
+            `;
+          })
+          .join('');
+      }
     }
   }
 
@@ -866,14 +908,22 @@ class AdminPanel {
       return;
     }
 
+    // Seletores dos containers
+    const tableContainer = contactsList.querySelector('.table-responsive');
+    const cardsContainer = contactsList.querySelector('.contacts-cards-list');
+
     if (!contacts || contacts.length === 0) {
-      contactsList.innerHTML =
-        '<div class="alert alert-info">Nenhum contato encontrado.</div>';
+      if (tableContainer)
+        tableContainer.innerHTML =
+          '<div class="alert alert-info">Nenhum contato encontrado.</div>';
+      if (cardsContainer)
+        cardsContainer.innerHTML =
+          '<div class="empty-state">Nenhum contato encontrado.</div>';
       return;
     }
 
+    // Montar tabela
     const tableHTML = `
-    <div class="table-responsive">
       <table class="table-modern" id="contacts-table">
           <thead>
               <tr>
@@ -913,10 +963,27 @@ class AdminPanel {
                 .join('')}
           </tbody>
       </table>
-    </div>
     `;
+    if (tableContainer) tableContainer.innerHTML = tableHTML;
 
-    contactsList.innerHTML = tableHTML;
+    // Montar cards (reutilizando o visual de displayRecentContacts)
+    const cardsHTML = contacts
+      .map(
+        contact => `
+          <div class="activity-item" data-contact-id="${contact.id}">
+            <div class="activity-icon"><i class="fas fa-envelope"></i></div>
+            <div class="activity-content">
+              <strong>${this.escapeHtml(contact.name)}</strong>
+              <span>${this.escapeHtml(contact.email)}</span>
+            </div>
+            <div class="activity-actions">
+              <button class="btn-modern btn-primary-modern btn-sm view-message" data-id="${contact.id}">Ver</button>
+            </div>
+          </div>
+        `
+      )
+      .join('');
+    if (cardsContainer) cardsContainer.innerHTML = cardsHTML;
   }
 
   async loadStats() {
@@ -1789,4 +1856,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const adminPanel = new AdminPanel();
   adminPanel.initAuth();
   window.adminPanel = adminPanel;
+
+  const sidebar = document.getElementById('adminSidebar');
+  const navLinks = document.querySelectorAll('#adminNav .nav-link');
+  navLinks.forEach(function (link) {
+    link.addEventListener('click', function () {
+      if (window.innerWidth <= 1024 && sidebar.classList.contains('active')) {
+        sidebar.classList.remove('active');
+      }
+    });
+  });
 });

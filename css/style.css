@@ -468,158 +468,95 @@ h4,
 }
 
 .site-mobile-menu {
-  width: 300px;
+  width: 90vw;
+  max-width: 340px;
   position: fixed;
   right: 0;
+  top: 0;
   z-index: 2000;
-  padding-top: 20px;
+  padding-top: 24px;
   background: #ffffff;
-  height: calc(100vh);
-  -webkit-transform: translateX(100%);
-  -ms-transform: translateX(100%);
+  border-radius: 18px 0 0 18px;
+  height: auto;
+  min-height: 0;
+  box-shadow: -8px 0 24px -8px rgba(0,0,0,0.12);
   transform: translateX(100%);
-  -webkit-transition: 0.8s all cubic-bezier(0.23, 1, 0.32, 1);
-  -o-transition: 0.8s all cubic-bezier(0.23, 1, 0.32, 1);
-  transition: 0.8s all cubic-bezier(0.23, 1, 0.32, 1);
+  transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 .offcanvas-menu .site-mobile-menu {
-  -webkit-box-shadow: -10px 0 20px -10px rgba(0, 0, 0, 0.1);
-  box-shadow: -10px 0 20px -10px rgba(0, 0, 0, 0.1);
-  -webkit-transform: translateX(0%);
-  -ms-transform: translateX(0%);
   transform: translateX(0%);
 }
 .site-mobile-menu .site-mobile-menu-header {
   width: 100%;
-  height: 12px;
-  float: left;
-  padding-left: 20px;
-  padding-right: 20px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 18px;
 }
-.site-mobile-menu .site-mobile-menu-header .site-mobile-menu-close {
-  float: right;
-  margin-top: 8px;
+.site-mobile-menu-close {
+  height: 28px;
+  width: 28px;
+  top: 0;
 }
-.site-mobile-menu .site-mobile-menu-header .site-mobile-menu-close span {
-  font-size: 30px;
-  display: inline-block;
-  padding-left: 10px;
-  padding-right: 0px;
-  line-height: 1;
-  cursor: pointer;
-  -webkit-transition: 0.3s all ease;
-  -o-transition: 0.3s all ease;
-  transition: 0.3s all ease;
-}
-.site-mobile-menu .site-mobile-menu-header .site-mobile-menu-logo {
-  float: left;
-  margin-top: 10px;
-  margin-left: 0px;
-}
-.site-mobile-menu .site-mobile-menu-header .site-mobile-menu-logo a {
-  display: inline-block;
-  text-transform: uppercase;
-}
-.site-mobile-menu .site-mobile-menu-header .site-mobile-menu-logo a img {
-  height: 100%;
-}
-.site-mobile-menu .site-mobile-menu-header .site-mobile-menu-logo a:hover {
-  text-decoration: none;
+.site-mobile-menu-close > span {
+  height: 28px;
+  width: 28px;
+  font-size: 22px;
 }
 .site-mobile-menu .site-mobile-menu-body {
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-  position: relative;
-  padding: 0 20px 20px 20px;
-  height: calc(100vh - 52px);
-  padding-bottom: 150px;
+  padding: 0 0 12px 0;
+  height: auto;
+  max-height: none;
+  overflow-y: visible;
 }
 .site-mobile-menu .site-nav-wrap {
   padding: 0;
   margin: 0;
   list-style: none;
-  position: relative;
-}
-.site-mobile-menu .site-nav-wrap a {
-  padding: 5px 20px;
-  display: block;
-  position: relative;
-  color: #000000af;
-}
-.site-mobile-menu .site-nav-wrap a:hover {
-  color: #000000;
-}
-.site-mobile-menu .site-nav-wrap li {
-  position: relative;
-  display: block;
-}
-.site-mobile-menu .site-nav-wrap li.active > a {
-  color: #000000ba;
-}
-.site-mobile-menu .site-nav-wrap .arrow-collapse {
-  position: absolute;
-  right: 0px;
-  top: 0px;
-  z-index: 20;
-  width: 36px;
-  height: 36px;
-  text-align: center;
-  cursor: pointer;
-  border-radius: 50%;
-  border: 1px solid #f8f9fa;
-}
-.site-mobile-menu .site-nav-wrap .arrow-collapse:before {
-  font-size: 14px;
-  z-index: 20;
-  font-family: 'icomoon';
-  content: '\e313';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%) rotate(-180deg);
-  -ms-transform: translate(-50%, -50%) rotate(-180deg);
-  transform: translate(-50%, -50%) rotate(-180deg);
-  -webkit-transition: 0.3s all ease;
-  -o-transition: 0.3s all ease;
-  transition: 0.3s all ease;
-}
-.site-mobile-menu .site-nav-wrap .arrow-collapse.collapsed:before {
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 .site-mobile-menu .site-nav-wrap > li {
-  display: block;
-  position: relative;
-  float: left;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 .site-mobile-menu .site-nav-wrap > li > a {
-  padding-left: 20px;
-  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  font-size: 18px;
+  color: #222;
+  border-radius: 10px;
+  background: transparent;
+  transition: background 0.2s;
+  width: 100%;
+  white-space: nowrap;
 }
-.site-mobile-menu .site-nav-wrap > li > ul {
-  padding: 0;
-  margin: 0;
-  list-style: none;
+.site-mobile-menu .site-nav-wrap > li > a:hover,
+.site-mobile-menu .site-nav-wrap > li.active > a {
+  background: #f2f6f8;
+  color: #0a6c6c;
 }
-.site-mobile-menu .site-nav-wrap > li > ul > li {
-  display: block;
+.site-mobile-menu .site-nav-wrap > li > a .menu-icon {
+  display: inline-block !important;
+  font-size: 20px;
+  color: #0a6c6c;
+  min-width: 24px;
+  text-align: center;
 }
-.site-mobile-menu .site-nav-wrap > li > ul > li > a {
-  padding-left: 40px;
-  font-size: 14px;
+@media (min-width: 992px) {
+  .site-mobile-menu { display: none !important; }
 }
-.site-mobile-menu .site-nav-wrap > li > ul > li > ul {
-  padding: 0;
-  margin: 0;
+@media (max-width: 991.98px) {
+  .site-mobile-menu .site-nav-wrap > li > a .menu-icon { display: inline-block !important; }
 }
-.site-mobile-menu .site-nav-wrap > li > ul > li > ul > li {
-  display: block;
-}
-.site-mobile-menu .site-nav-wrap > li > ul > li > ul > li > a {
-  font-size: 14px;
-  padding-left: 60px;
+@media (min-width: 992px) {
+  .site-nav .site-menu .menu-icon { display: none !important; }
 }
 
 .sticky-wrapper {
@@ -822,6 +759,14 @@ h4,
 .hero .intro-wrap {
   position: relative;
   z-index: 1;
+}
+.hero .intro-wrap h1 {
+  margin-top: 70px;
+}
+@media (max-width: 575.98px) {
+  .hero .intro-wrap h1 {
+    margin-top: 50px;
+  }
 }
 .contact-intro {
   padding-top: 80vh; /* Ajuste este valor conforme necessário para a página de contato */
@@ -2594,4 +2539,527 @@ h4,
   font-size: 1.1rem;
   margin: 0;
   font-weight: 500;
+}
+
+@media (max-width: 991.98px) {
+  .site-nav .row {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+  }
+  .site-nav .col-sm-8, .site-nav .col-md-8 {
+    flex: 1 1 80% !important;
+    max-width: 80% !important;
+  }
+  .site-nav .col-sm-4, .site-nav .col-md-4 {
+    flex: 1 1 20% !important;
+    max-width: 20% !important;
+  }
+  .burger {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .hero h1 {
+    font-size: 28px !important;
+    margin-bottom: 1.5rem !important;
+  }
+  .hero .intro-wrap h1 {
+    margin-top: 60px !important;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .hero .intro-wrap h1 {
+    margin-top: 80px !important;
+    font-size: 32px !important;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .site-mobile-menu {
+    width: 220px !important;
+    max-width: 80vw !important;
+    left: auto !important;
+    right: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    box-shadow: -4px 0 16px rgba(0,0,0,0.08);
+    top: 0 !important;
+  }
+  .site-mobile-menu .site-mobile-menu-body {
+    height: auto !important;
+    max-height: none !important;
+    padding-bottom: 0 !important;
+    overflow-y: visible !important;
+  }
+}
+
+.menu-icon { display: none !important; }
+@media (max-width: 991.98px) {
+  .menu-icon { display: inline-block !important; }
+}
+
+@media (max-width: 575.98px) {
+  .mobile-menu {
+    width: 250px;
+    background: #fff;
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+    box-shadow: -4px 0 16px rgba(0,0,0,0.08);
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 2000;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    padding: 12px 0;
+    display: block;
+  }
+  .mobile-menu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .mobile-menu-link {
+    display: flex;
+    align-items: center;
+    padding: 14px 24px;
+    font-size: 17px;
+    color: #1a374d;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+  .mobile-menu-link:active,
+  .mobile-menu-link:focus,
+  .mobile-menu-link:hover {
+    background: #f0f4f8;
+    color: #406882;
+  }
+  .mobile-menu-link i {
+    font-size: 20px;
+    margin-right: 12px;
+    color: #406882;
+    flex-shrink: 0;
+  }
+  .mobile-menu-text {
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: 0.1px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .form {
+    width: 100vw;
+    max-width: 100vw;
+    border-radius: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  #reservationForm .row,
+  #reservationForm .col-12,
+  #reservationForm .col-sm-12,
+  #reservationForm .col-md-6,
+  #reservationForm .col-lg-6,
+  #reservationForm .col-lg-4 {
+    max-width: 100%;
+    flex: 0 0 100%;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  #reservationForm .form-control,
+  #reservationForm .custom-select,
+  #reservationForm textarea,
+  #reservationForm .btn-block {
+    width: 100%;
+    box-sizing: border-box;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 575.98px) {
+  body {
+    overflow-x: hidden;
+  }
+  .container-reserva {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .container-reserva .form {
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 0;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+@media (max-width: 575.98px) {
+  html, body {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+  .container-reserva .row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  img, .img-fluid, .slides img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+@media (max-width: 575.98px) {
+  #reservationForm {
+    border-radius: 10px !important;
+  }
+}
+
+.activity-item.reservation-activity-item {
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+.activity-item.reservation-activity-item .activity-content {
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+.activity-item.reservation-activity-item .reservation-row-top,
+.activity-item.reservation-activity-item .reservation-row-bottom {
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  word-break: break-word;
+}
+.activity-item.reservation-activity-item .reservation-row-bottom span {
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 575.98px) {
+  .activity-item.reservation-activity-item {
+    flex-direction: row !important;
+    align-items: stretch !important;
+    padding: 0.85rem 0.7rem !important;
+    min-width: 0;
+    max-width: 100%;
+    gap: 0.7rem;
+  }
+  .activity-item.reservation-activity-item .activity-icon {
+    margin: 0;
+    align-self: center;
+    flex-shrink: 0;
+    width: 2.2rem;
+    height: 2.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .activity-item.reservation-activity-item .activity-content {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.15rem;
+  }
+  .activity-item.reservation-activity-item .reservation-row-top {
+    font-size: 1.05em;
+    margin-bottom: 0.1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .activity-item.reservation-activity-item .reservation-row-bottom {
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    font-size: 0.97em;
+    margin-top: 0.1em;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .activity-item.reservation-activity-item .reservation-row-bottom span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.97em;
+    max-width: 90px;
+  }
+  .activity-item.reservation-activity-item .reservation-status-col {
+    min-width: 70px;
+    max-width: 90px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    align-self: center;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .activity-item .reservation-row-bottom span,
+  .activity-item.reservation-activity-item .reservation-row-bottom span {
+    display: inline-flex;
+    align-items: center;
+  }
+  .activity-item .reservation-row-bottom span:has(.fa-user-friends),
+  .activity-item.reservation-activity-item .reservation-row-bottom span:has(.fa-user-friends) {
+    display: none !important;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .activity-item .reservation-row-bottom,
+  .activity-item.reservation-activity-item .reservation-row-bottom {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.1rem !important;
+    width: 100%;
+    flex-wrap: nowrap;
+  }
+  .activity-item .reservation-row-bottom span,
+  .activity-item.reservation-activity-item .reservation-row-bottom span {
+    width: 100%;
+    max-width: 100%;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+    font-size: 0.97em;
+  }
+}
+
+#sidebarToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0.5rem;
+  border-radius: 8px;
+  font-size: 1.7rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  background: none;
+  border: none;
+}
+#sidebarToggle:focus,
+#sidebarToggle:active {
+  background: rgba(37,99,235,0.08);
+  outline: none;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 1.2rem 1rem 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.05);
+}
+.logo-col {
+  flex: 0 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo-col img {
+  height: 48px;
+  width: auto;
+  display: block;
+}
+.brand-col {
+  min-width: 0;
+  max-width: 150px;
+}
+.brand-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #fff;
+  line-height: 1.1;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.brand-subtitle {
+  font-size: 0.78rem;
+  color: #cbd5e1;
+  opacity: 0.8;
+  font-weight: 400;
+  margin-top: 0.05rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.reservation-cards-list {
+  display: none;
+}
+@media (max-width: 768px) {
+  .reservation-cards-list {
+    display: flex !important;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+  .table-responsive, .table-modern {
+    display: none !important;
+  }
+}
+
+/* === Variáveis globais para cards === */
+:root {
+  --card-bg: #fff;
+  --card-text: #222;
+  --card-border: #e5e7eb;
+  --card-shadow: 0 2px 12px rgba(59, 130, 246, 0.07);
+  --card-secondary-text: #64748b;
+  --card-accent: #3b82f6;
+}
+body.dark-mode {
+  --card-bg: #181f2a;
+  --card-text: #f1f5f9;
+  --card-border: #232b3b;
+  --card-shadow: 0 2px 12px rgba(16, 185, 129, 0.10);
+  --card-secondary-text: #cbd5e1;
+  --card-accent: #38bdf8;
+}
+
+/* Ajuste dos cards principais para usar variáveis */
+.content-card,
+.activity-item.reservation-activity-item {
+  background: var(--card-bg) !important;
+  color: var(--card-text) !important;
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+}
+
+/* Ajuste de textos secundários e acentos nos cards */
+.content-card .label,
+.activity-item.reservation-activity-item .reservation-row-bottom span,
+.activity-item.reservation-activity-item .reservation-row-top {
+  color: var(--card-secondary-text) !important;
+}
+.content-card .value,
+.activity-item.reservation-activity-item .reservation-status-col {
+  color: var(--card-accent) !important;
+}
+
+/* Ajuste de ícones nos cards para contraste */
+.content-card i,
+.activity-item.reservation-activity-item i,
+.activity-item.reservation-activity-item .activity-icon {
+  color: var(--card-accent) !important;
+  opacity: 0.92;
+}
+
+/* Garantir contraste de links nos cards */
+.content-card a,
+.activity-item.reservation-activity-item a {
+  color: var(--card-accent) !important;
+}
+.content-card a:hover,
+.activity-item.reservation-activity-item a:hover {
+  color: var(--card-secondary-text) !important;
+}
+
+/* Corrige fundo duplicado do ícone nos cards de reserva */
+.activity-item.reservation-activity-item .activity-icon {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
+}
+.activity-item.reservation-activity-item .activity-icon i {
+  font-size: 1.45rem;
+  color: var(--card-accent) !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: block;
+}
+
+/* Reforço para modo escuro: sempre no final do CSS */
+html.dark-mode, body.dark-mode {
+  --card-bg: #181f2a !important;
+  --card-text: #f1f5f9 !important;
+  --card-border: #232b3b !important;
+  --card-shadow: 0 2px 12px rgba(16, 185, 129, 0.10) !important;
+  --card-secondary-text: #cbd5e1 !important;
+  --card-accent: #38bdf8 !important;
+}
+
+/* Ícone de email sempre branco nos cards de Últimos Contatos */
+.content-card .activity-icon i.fa-envelope,
+.content-card .activity-icon i.fa-envelope-open,
+.content-card .activity-icon i.fa-envelope-open-text {
+  color: #fff !important;
+  opacity: 1 !important;
+}
+
+.contacts-cards-list {
+  display: none;
+}
+@media (max-width: 768px) {
+  .contacts-cards-list {
+    display: flex !important;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+  #contactsList .table-responsive {
+    display: none !important;
+  }
+}
+
+/* Ajuste: nome e email em coluna nos cards de contatos no mobile */
+@media (max-width: 768px) {
+  .contacts-cards-list .activity-item .activity-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.18rem;
+  }
+  .contacts-cards-list .activity-item .activity-content strong {
+    font-size: 1.08em;
+    font-weight: 700;
+    margin-bottom: 0.08em;
+  }
+  .contacts-cards-list .activity-item .activity-content span {
+    font-size: 0.98em;
+    color: var(--card-secondary-text);
+    word-break: break-all;
+  }
 }

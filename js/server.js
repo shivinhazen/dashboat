@@ -313,34 +313,6 @@ async function saveContact(contactData) {
   }
 }
 
-// Função para enviar email
-async function sendEmail(contactData) {
-  const mailOptions = {
-    from: config.email.user,
-    to: config.email.defaultRecipient,
-    subject: 'Novo contato via site - Dash Boat Tour',
-    html: `
-            <h2>Novo contato recebido via site</h2>
-            <p><strong>Nome:</strong> ${contactData.name || 'Não informado'}</p>
-            <p><strong>Email:</strong> ${contactData.email || 'Não informado'}</p>
-            <p><strong>Telefone:</strong> ${contactData.phone || 'Não informado'}</p>
-            <p><strong>Mensagem:</strong></p>
-            <p>${contactData.message || 'Não informado'}</p>
-            <hr>
-            <p><small>Enviado em: ${new Date().toLocaleString('pt-BR')}</small></p>
-        `,
-  };
-
-  try {
-    await transporter.sendMail(mailOptions);
-    console.log('Email enviado com sucesso');
-    return true;
-  } catch (error) {
-    console.error('Erro ao enviar email:', error);
-    return false;
-  }
-}
-
 // Rota principal
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../index.html'));

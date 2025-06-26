@@ -7,7 +7,7 @@
     "destination": "Cabo Frio",
     "date": "2024-08-11",
     "guests": 2,
-    "status": "confirmada",
+    "status": "pendente",
     "timestamp": "2024-06-22T12:10:00.000Z",
     "ip": "127.0.0.1",
     "mensagem": "Gostaria de saber se há desconto para casal."

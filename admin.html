@@ -22,32 +22,190 @@
 
     <title>Painel Administrativo - Dash Boat Tour</title>
     <style>
+        /* =====================
+           VARIÁVEIS DE TEMA
+           ===================== */
         :root {
-            --primary-color: #2563eb;
-            --secondary-color: #64748b;
+            --primary-color: #3b82f6;
+            --secondary-color: #9ca3af;
             --success-color: #10b981;
             --warning-color: #f59e0b;
             --danger-color: #ef4444;
-            --dark-color: #1e293b;
-            --light-color: #f8fafc;
+            --dark-color: #1e293b; /* SEMPRE ESCURO */
+            --light-color: #f8fafc; /* SEMPRE CLARO */
             --border-color: #e2e8f0;
             --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
             --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
             --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
             --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
         }
-
-        * {
-            font-family: 'Inter', sans-serif;
-            box-sizing: border-box;
+        
+        html.dark-mode {
+            /* NÃO redefina as variáveis, apenas sobrescreva propriedades dos elementos */
         }
-
+        
         body {
-            background-color: #f1f5f9;
-            color: #334155;
+            background-color: var(--light-color);
+            color: var(--dark-color);
             margin: 0;
             padding: 0;
             line-height: 1.6;
+        }
+        html.dark-mode body {
+            background-color: #111827;
+            color: #e5e7eb;
+        }
+        
+        /* =====================
+           LOGIN SCREEN
+           ===================== */
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem;
+        }
+        html.dark-mode .login-container {
+            background: linear-gradient(135deg, #232946 0%, #1e293b 100%);
+        }
+        .login-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow-xl);
+            padding: 3rem;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        html.dark-mode .login-card {
+            background: #1e293b;
+            border: 1px solid #334155;
+        }
+        .login-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+        html.dark-mode .login-title {
+            color: #f8fafc;
+        }
+        .login-subtitle {
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+        }
+        html.dark-mode .login-subtitle {
+            color: #e0e7ef;
+        }
+        .login-form {
+            width: 100%;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #374151;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.025em;
+        }
+        html.dark-mode .form-label {
+            color: #f8fafc;
+        }
+        .form-input {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #1e293b;
+            background: white;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-sizing: border-box;
+        }
+        html.dark-mode .form-input {
+            background: #111827;
+            color: #f8fafc;
+            border-color: #334155;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            transform: translateY(-1px);
+        }
+        .form-input::placeholder {
+            color: #94a3b8;
+        }
+        html.dark-mode .form-input::placeholder {
+            color: #64748b;
+        }
+        .login-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1d4ed8 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-top: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        html.dark-mode .login-btn {
+            background: linear-gradient(135deg, #2563eb 0%, #334155 100%);
+            color: #f8fafc;
+        }
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+        }
+        .login-btn:active {
+            transform: translateY(0);
+        }
+        .login-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .error-message {
+            background: #fef2f2;
+            color: #dc2626;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border: 1px solid #fecaca;
+        }
+        html.dark-mode .error-message {
+            background: #7f1d1d;
+            color: #fecaca;
+            border-color: #ef4444;
+        }
+        .success-message {
+            background: #f0fdf4;
+            color: #16a34a;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border: 1px solid #bbf7d0;
+        }
+        html.dark-mode .success-message {
+            background: #134e2a;
+            color: #6ee7b7;
+            border-color: #10b981;
         }
 
         /* Login Screen */
@@ -3469,16 +3627,14 @@
         <!-- Sidebar -->
         <div class="admin-sidebar" id="adminSidebar">
             <div class="logo-section">
-                <h4>
-                    <img src="images/logo.png" alt="Logo" height="30" class="mr-2">
-                    Dash Boat Tour
-                </h4>
-                <small style="opacity: 0.7;">Painel Administrativo</small>
+                <div class="logo-col">
+                    <img src="images/logo.png" alt="Logo">
+                </div>
+                <div class="brand-col">
+                    <div class="brand-title">Dash Boat Tour</div>
+                    <div class="brand-subtitle">Painel Administrativo</div>
+                </div>
             </div>
-            <!-- Botão de colapso para mobile -->
-            <button class="sidebar-toggle d-lg-none" id="sidebarToggle" aria-label="Abrir/Fechar menu" style="background: none; border: none; color: white; font-size: 1.5rem; margin: 1rem; display: block;">
-                <i class="fas fa-bars"></i>
-            </button>
             <nav class="nav flex-column" id="adminNav">
                 <a class="nav-link active" href="#dashboard" data-tab="dashboard">
                     <span class="icon"><i class="fas fa-tachometer-alt"></i></span>
@@ -3495,6 +3651,10 @@
                 <a class="nav-link" href="#stats" data-tab="stats">
                     <span class="icon"><i class="fas fa-chart-pie"></i></span>
                     Estatísticas
+                </a>
+                <a class="nav-link d-lg-none" href="#" id="themeToggleBtn" title="Modo escuro" aria-label="Alternar tema">
+                    <span class="icon"><i id="themeToggleIcon" class="fa-solid fa-circle-half-stroke"></i></span>
+                    Alternar Tema
                 </a>
                 <hr style="border-color: rgba(255,255,255,0.1); margin: 1rem;">
                 <a class="nav-link" href="index.html">
@@ -3513,12 +3673,18 @@
 
         <!-- Main Content -->
         <div class="admin-content">
+            <!-- Topbar com hambúrguer (apenas mobile) -->
+            <div class="admin-topbar d-lg-none" style="display: flex; align-items: center; justify-content: flex-end; gap: 1rem; margin-bottom: 1.2rem;">
+                <button id="sidebarToggle" aria-label="Abrir/Fechar menu" style="background: none; border: none; color: #2563eb; font-size: 1.7rem; display: block;">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
             <!-- Dashboard Tab -->
             <div id="dashboard" class="tab-content active">
                 <div class="page-header polished-header">
                     <h2 class="page-title"><i class="fas fa-tachometer-alt"></i> Dashboard</h2>
                     <p class="page-subtitle">Visão geral do sistema e atividades recentes</p>
-                    <button id="themeToggleBtn" aria-label="Alternar tema" class="header-toggle" style="background:none;border:none;padding:0;line-height:1;cursor:pointer;" title="Modo escuro">
+                    <button id="themeToggleBtn" aria-label="Alternar tema" class="header-toggle d-none d-lg-inline" style="background:none;border:none;padding:0;line-height:1;cursor:pointer;" title="Modo escuro">
                         <i id="themeToggleIcon" class="fa-solid fa-circle-half-stroke fa-2x"></i>
                     </button>
                 </div>
@@ -3598,54 +3764,8 @@
                   <p class="page-subtitle">Visualize e gerencie todas as reservas do sistema</p>
                 </div>
                 <div id="reservationsList">
-                  <div style="margin-bottom: 12px; position: relative; display: inline-block;">
-                    <button id="filterDropdownBtn" class="btn-modern btn-secondary-modern" type="button">
-                      <i class="fas fa-filter"></i> Filtrar
-                    </button>
-                    <div id="filterDropdown" class="dropdown-menu" style="display: none; min-width: 260px; padding: 16px; position: absolute; z-index: 1000;">
-                      <form id="filterForm" autocomplete="off">
-                        <div class="form-group">
-                          <label for="filterStatus">Status</label>
-                          <select id="filterStatus" class="form-control">
-                            <option value="">Todos</option>
-                            <option value="pendente">Pendente</option>
-                            <option value="confirmada">Confirmada</option>
-                            <option value="cancelada">Cancelada</option>
-                          </select>
-                        </div>
-                        <div class="form-group">
-                          <label for="filterDestination">Destino</label>
-                          <select id="filterDestination" class="form-control">
-                            <option value="">Todos</option>
-                            <option value="Cabo Frio">Cabo Frio</option>
-                            <option value="Arraial do Cabo">Arraial do Cabo</option>
-                            <option value="Armação de Búzios">Armação de Búzios</option>
-                          </select>
-                        </div>
-                        <div class="d-flex justify-content-between mt-3">
-                          <button type="submit" class="btn-modern btn-primary-modern">Aplicar</button>
-                          <button type="button" id="clearFiltersBtn" class="btn-modern btn-secondary-modern">Limpar</button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                  <div class="table-responsive">
-                    <table class="table-modern" id="reservations-table">
-                      <thead>
-                        <tr>
-                          <th>Nome</th>
-                          <th>Destino</th>
-                          <th>Data</th>
-                          <th>Pessoas</th>
-                          <th>Status</th>
-                          <th class="text-right">Ações</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <!-- Linhas de reserva serão inseridas aqui -->
-                      </tbody>
-                    </table>
-                  </div>
+                  <div class="table-responsive"></div>
+                  <div class="reservation-cards-list"></div>
                 </div>
               </div>
 
@@ -3656,7 +3776,8 @@
                     <p class="page-subtitle">Visualize e gerencie todas as mensagens de contato</p>
                 </div>
                 <div id="contactsList">
-                    <!-- A lista de contatos será carregada aqui pelo admin.js -->
+                  <div class="table-responsive"></div>
+                  <div class="contacts-cards-list"></div>
                 </div>
               </div>
 
@@ -3875,27 +3996,33 @@
     });
     // Dark/light mode toggle (ícone)
     (function() {
-        var themeToggleBtn = document.getElementById('themeToggleBtn');
-        var themeToggleIcon = document.getElementById('themeToggleIcon');
         function setTheme(theme) {
             if (theme === 'dark') {
                 document.documentElement.classList.add('dark-mode');
-                if (themeToggleBtn) themeToggleBtn.title = 'Modo claro';
+                document.querySelectorAll('#themeToggleBtn').forEach(btn => btn.title = 'Modo claro');
+                document.querySelectorAll('#themeToggleIcon').forEach(icon => {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-circle-half-stroke');
+                });
             } else {
                 document.documentElement.classList.remove('dark-mode');
-                if (themeToggleBtn) themeToggleBtn.title = 'Modo escuro';
+                document.querySelectorAll('#themeToggleBtn').forEach(btn => btn.title = 'Modo escuro');
+                document.querySelectorAll('#themeToggleIcon').forEach(icon => {
+                    icon.classList.remove('fa-circle-half-stroke');
+                    icon.classList.add('fa-sun');
+                });
             }
             localStorage.setItem('theme', theme);
         }
         document.addEventListener('DOMContentLoaded', function() {
             var savedTheme = localStorage.getItem('theme') || 'light';
             setTheme(savedTheme);
-            if (themeToggleBtn) {
-                themeToggleBtn.addEventListener('click', function() {
+            document.querySelectorAll('#themeToggleBtn').forEach(btn => {
+                btn.addEventListener('click', function() {
                     var current = document.documentElement.classList.contains('dark-mode') ? 'dark' : 'light';
                     setTheme(current === 'dark' ? 'light' : 'dark');
                 });
-            }
+            });
         });
     })();
     </script>
