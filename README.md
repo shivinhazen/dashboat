@@ -9,14 +9,15 @@ Site institucional para reservas de passeios de barco de luxo em Búzios, Cabo F
 
 ## Índice
 - [Visão Geral](#visão-geral)
-- [Acesse Online (Recrutadores)](#acesse-online-recrutadores)
+- [Acesso ao Projeto Online](#acesso-ao-projeto-online)
+- [Acesso ao Painel Admin](#acesso-ao-painel-admin)
 - [Funcionalidades](#funcionalidades)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 - [Ferramentas de Qualidade e Monitoramento](#ferramentas-de-qualidade-e-monitoramento)
 - [Scripts NPM Úteis](#scripts-npm-úteis)
 - [Arquitetura e Organização](#arquitetura-e-organização)
 - [Pré-requisitos](#pré-requisitos)
-- [Instalação e Uso Local (Desenvolvedores)](#instalação-e-uso-local-desenvolvedores)
+- [Instalação e Uso Local](#instalação-e-uso-local)
 - [Testes Automatizados](#testes-automatizados)
 - [Build e Deploy](#build-e-deploy)
 - [Contribuição](#contribuição)
@@ -30,11 +31,6 @@ O Dash Boat Tour é um site institucional responsivo para reservas de passeios d
 
 ---
 
-## Acesse Online (Recrutadores)
-> **Acesse a versão online do projeto, sem precisar instalar nada localmente:**
->
-> [https://dashboat-production.up.railway.app](https://dashboat-production.up.railway.app)
-
 ## Acesso ao Projeto Online
 
 - **Site público:** [https://dashboat-production.up.railway.app](https://dashboat-production.up.railway.app)
@@ -47,28 +43,6 @@ O Dash Boat Tour é um site institucional responsivo para reservas de passeios d
    - **Usuário:** `admin`
    - **Senha:** `password`
 3. Após login, você terá acesso ao painel de reservas, contatos e estatísticas.
-
-## Dicas e Solução de Problemas
-
-- **Ícones quadrados ou corrompidos?**
-  - Limpe o cache do navegador (Ctrl+Shift+R) após o deploy.
-  - Verifique se a internet não está bloqueando fontes externas.
-- **Erro de login?**
-  - Confirme se está usando o usuário e senha corretos.
-  - Se alterou as variáveis de ambiente no Railway, use as novas credenciais.
-- **Deploy não atualiza?**
-  - Verifique se fez `git push` para a branch correta.
-  - Veja os logs do Railway para mensagens de erro.
-
-## Outras Informações
-
-- O projeto utiliza Node.js, Express, Helmet, CORS, Rate Limiting e serve arquivos estáticos (incluindo fontes) diretamente do backend.
-- Para desenvolvimento local, basta rodar:
-  ```sh
-  npm install
-  npm start
-  ```
-- Para acessar o admin localmente: [http://localhost:8080/admin](http://localhost:8080/admin)
 
 ---
 
@@ -141,9 +115,7 @@ O Dash Boat Tour é um site institucional responsivo para reservas de passeios d
 
 ---
 
-## Instalação e Uso Local (Desenvolvedores)
-> **Atenção:** Recrutadores não precisam instalar localmente. Use o link online acima!
-
+## Instalação e Uso Local
 1. **Clone o repositório:**
    ```bash
    git clone https://github.com/seu-usuario/dashboat-tour.git
@@ -162,6 +134,7 @@ O Dash Boat Tour é um site institucional responsivo para reservas de passeios d
    npm start
    ```
    O site estará disponível em [http://localhost:5000](http://localhost:5000)
+   Para acessar o admin localmente: [http://localhost:8080/admin](http://localhost:8080/admin)
 
 ---
 
