@@ -1,6 +1,6 @@
 # Dash Boat Tour
 
-[![Deploy on Railway](https://img.shields.io/badge/Deploy-Railway-blue?logo=railway)](https://railway.app/)
+[![Deploy Railway](https://img.shields.io/badge/Deploy-Railway-blue?logo=railway)](https://dashboat-production.up.railway.app)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
 Site institucional para reservas de passeios de barco de luxo em Búzios, Cabo Frio e Arraial do Cabo.
@@ -25,21 +25,54 @@ Site institucional para reservas de passeios de barco de luxo em Búzios, Cabo F
 
 ---
 
-## Visão Geral <!-- visão-geral -->
+## Visão Geral
 O Dash Boat Tour é um site institucional responsivo para reservas de passeios de barco de luxo, com painel administrativo, otimização de imagens, segurança e automação de backups. O projeto foi desenvolvido para promover experiências marítimas inesquecíveis, focando em usabilidade, performance e segurança.
 
 ---
 
-## Acesse Online (Recrutadores) <!-- acesse-online-recrutadores -->
+## Acesse Online (Recrutadores)
 > **Acesse a versão online do projeto, sem precisar instalar nada localmente:**
 >
-> [https://dashboat-tour-production.up.railway.app/](https://dashboat-tour-production.up.railway.app/) <!-- Substitua pelo link real do Railway após o deploy -->
->
-> Basta clicar e navegar! Recomendo testar em desktop e mobile para ver a responsividade.
+> [https://dashboat-production.up.railway.app](https://dashboat-production.up.railway.app)
+
+## Acesso ao Projeto Online
+
+- **Site público:** [https://dashboat-production.up.railway.app](https://dashboat-production.up.railway.app)
+- **Painel Admin:** [https://dashboat-production.up.railway.app/admin](https://dashboat-production.up.railway.app/admin)
+
+## Acesso ao Painel Admin
+
+1. Acesse o painel admin pelo link acima.
+2. Faça login com as credenciais padrão:
+   - **Usuário:** `admin`
+   - **Senha:** `password`
+3. Após login, você terá acesso ao painel de reservas, contatos e estatísticas.
+
+## Dicas e Solução de Problemas
+
+- **Ícones quadrados ou corrompidos?**
+  - Limpe o cache do navegador (Ctrl+Shift+R) após o deploy.
+  - Verifique se a internet não está bloqueando fontes externas.
+- **Erro de login?**
+  - Confirme se está usando o usuário e senha corretos.
+  - Se alterou as variáveis de ambiente no Railway, use as novas credenciais.
+- **Deploy não atualiza?**
+  - Verifique se fez `git push` para a branch correta.
+  - Veja os logs do Railway para mensagens de erro.
+
+## Outras Informações
+
+- O projeto utiliza Node.js, Express, Helmet, CORS, Rate Limiting e serve arquivos estáticos (incluindo fontes) diretamente do backend.
+- Para desenvolvimento local, basta rodar:
+  ```sh
+  npm install
+  npm start
+  ```
+- Para acessar o admin localmente: [http://localhost:8080/admin](http://localhost:8080/admin)
 
 ---
 
-## Funcionalidades <!-- funcionalidades -->
+## Funcionalidades
 - Página institucional responsiva
 - Formulário de reserva com validação
 - Painel administrativo para gestão de reservas e contatos
@@ -50,7 +83,7 @@ O Dash Boat Tour é um site institucional responsivo para reservas de passeios d
 
 ---
 
-## Tecnologias Utilizadas <!-- tecnologias-utilizadas -->
+## Tecnologias Utilizadas
 - **Node.js** (backend)
 - **Express**
 - **JavaScript** (ES6+)
@@ -65,7 +98,7 @@ O Dash Boat Tour é um site institucional responsivo para reservas de passeios d
 
 ---
 
-## Ferramentas de Qualidade e Monitoramento <!-- ferramentas-de-qualidade-e-monitoramento -->
+## Ferramentas de Qualidade e Monitoramento
 - **ESLint** e **Prettier**: Garantem código limpo e padronizado.
 - **Husky** + **lint-staged**: Executam lint e formatação automaticamente nos commits.
 - **Sentry**: Monitoramento de erros em produção.
@@ -76,7 +109,7 @@ O Dash Boat Tour é um site institucional responsivo para reservas de passeios d
 
 ---
 
-## Scripts NPM Úteis <!-- scripts-npm-úteis -->
+## Scripts NPM Úteis
 - `npm run dev` — Desenvolvimento com hot reload (Nodemon)
 - `npm start` — Inicia o servidor em produção
 - `npm run build` — Gera build otimizado em `dist/`
@@ -89,7 +122,7 @@ O Dash Boat Tour é um site institucional responsivo para reservas de passeios d
 
 ---
 
-## Arquitetura e Organização <!-- arquitetura-e-organização -->
+## Arquitetura e Organização
 - **Estrutura modular**: Separação clara entre backend (`js/`), frontend (`src/js/`), middlewares, services, configs e rotas.
 - **Services**: Serviços para dados, e-mail e logs.
 - **Middlewares**: Autenticação, segurança e validação.
@@ -100,7 +133,7 @@ O Dash Boat Tour é um site institucional responsivo para reservas de passeios d
 
 ---
 
-## Pré-requisitos <!-- pré-requisitos -->
+## Pré-requisitos
 - **Node.js** v18+ (recomendado)
 - **npm** v9+
 - (Opcional) Conta de e-mail para envio de notificações
@@ -108,7 +141,7 @@ O Dash Boat Tour é um site institucional responsivo para reservas de passeios d
 
 ---
 
-## Instalação e Uso Local (Desenvolvedores) <!-- instalação-e-uso-local-desenvolvedores -->
+## Instalação e Uso Local (Desenvolvedores)
 > **Atenção:** Recrutadores não precisam instalar localmente. Use o link online acima!
 
 1. **Clone o repositório:**
@@ -132,7 +165,7 @@ O Dash Boat Tour é um site institucional responsivo para reservas de passeios d
 
 ---
 
-## Testes Automatizados <!-- testes-automatizados -->
+## Testes Automatizados
 - Execute os testes com:
   ```bash
   npm test
@@ -141,14 +174,14 @@ O Dash Boat Tour é um site institucional responsivo para reservas de passeios d
 
 ---
 
-## Build e Deploy <!-- build-e-deploy -->
+## Build e Deploy
 - O build copia arquivos para a pasta `dist/`.
 - Deploy automatizado via Railway (ver `railway.json`).
 - Healthcheck e restart automático configurados para produção.
 
 ---
 
-## Contribuição <!-- contribuição -->
+## Contribuição
 Pull requests são bem-vindos! Para contribuir:
 1. Faça um fork do projeto
 2. Crie uma branch (`git checkout -b feature/nome-da-feature`)
@@ -160,15 +193,10 @@ Siga o padrão de código, escreva testes e descreva claramente suas mudanças.
 
 ---
 
-## Licença <!-- licença -->
+## Licença
 MIT. Veja o arquivo [LICENSE](./LICENSE).
 
 ---
 
-## Contato <!-- contato -->
-- Lucas Leão — [LinkedIn](https://www.linkedin.com/in/lucasleao)
-- E-mail: lucasleaobcmt@gmail.com
-
----
-
-> Projeto desenvolvido para promover experiências marítimas inesquecíveis! 🌊 
+## Contato
+Dúvidas ou problemas? Abra uma issue ou entre em contato pelo e-mail do projeto. 
