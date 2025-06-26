@@ -154,22 +154,13 @@ O Dash Boat Tour é um site institucional responsivo para reservas de passeios d
 
 ---
 
-## Contribuição
-Pull requests são bem-vindos! Para contribuir:
-1. Faça um fork do projeto
-2. Crie uma branch (`git checkout -b feature/nome-da-feature`)
-3. Commit suas alterações (`git commit -m 'feat: nova feature'`)
-4. Push para o seu fork (`git push origin feature/nome-da-feature`)
-5. Abra um Pull Request
-
-Siga o padrão de código, escreva testes e descreva claramente suas mudanças.
-
----
 
 ## Licença
 MIT. Veja o arquivo [LICENSE](./LICENSE).
 
 ---
 
-## Contato
-Dúvidas ou problemas? Abra uma issue ou entre em contato pelo e-mail do projeto. 
+### Contato
+- [LinkedIn](https://www.linkedin.com/in/lucas-leao-shvzn)
+- [GitHub](https://github.com/shivinhazen)
+- [Email](mailto:lucasleaobcmt@gmail.com)
