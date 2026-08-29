@@ -1,0 +1,42 @@
+name: Apply security refresh
+
+on:
+  push:
+    branches: [security/hardening-2026-08-29]
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: ${{ !contains(github.event.head_commit.message, '[security-lock]') }}
+    runs-on: ubuntu-latest
+    env:
+      NODE_ENV: test
+      JWT_SECRET: ci-only-jwt-secret-with-at-least-32-characters
+      ADMIN_USER: admin-ci
+      ADMIN_PASSWORD: $2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi
+      ADMIN_PLAIN_PASSWORD: password
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: security/hardening-2026-08-29
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Generate and validate runtime lockfile
+        run: |
+          npm install
+          npm audit fix || true
+          npm ci
+          npm audit --omit=dev --audit-level=high
+          npm run lint
+          npm test -- --runInBand
+          npm run build
+      - name: Commit generated lockfile
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package.json package-lock.json
+          git diff --cached --quiet || git commit -m "chore: align validated security lockfile [security-lock]"
+          git push origin HEAD:security/hardening-2026-08-29
