@@ -34,7 +34,7 @@ const helmetConfig = helmet({
     },
   },
   hsts: {
-    maxAge: 31536000, // 1 ano
+    maxAge: 31536000,
     includeSubDomains: true,
     preload: true,
   },
@@ -43,13 +43,19 @@ const helmetConfig = helmet({
 });
 
 // Configuração do CORS
+const configuredOrigins = (process.env.CORS_ORIGIN || '')
+  .split(',')
+  .map(origin => origin.trim())
+  .filter(Boolean);
+
 const allowedOrigins = [
+  ...configuredOrigins,
   'https://dashboat-production.up.railway.app',
   'http://localhost:5000',
   'http://127.0.0.1:5000',
   'http://localhost:8080',
   'http://127.0.0.1:8080',
-].filter(Boolean);
+];
 
 const corsOptions = {
   origin: function (origin, callback) {
@@ -67,7 +73,7 @@ const corsOptions = {
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
-  maxAge: 86400, // 24 horas
+  maxAge: 86400,
 };
 
 // Configurações de Rate Limiting
@@ -88,13 +94,23 @@ const formLimiter = rateLimit({
   skipSuccessfulRequests: true,
 });
 
-const apiLimiter = rateLimit({
+const rawApiLimiter = rateLimit({
   windowMs: config.rateLimit.api.windowMs,
   max: config.rateLimit.api.max,
   message: {
     error: 'Muitas requisições à API. Tente novamente em 15 minutos.',
   },
 });
+
+// A rota legada retornava objetos de contato completos, incluindo PII.
+// Bloqueá-la antes do handler preserva a compatibilidade do restante do servidor
+// sem permitir exposição pública dos dados persistidos.
+const apiLimiter = (req, res, next) => {
+  if (req.method === 'GET' && req.path === '/public/recent-contacts') {
+    return res.status(404).json({ error: 'Endpoint não disponível.' });
+  }
+  return rawApiLimiter(req, res, next);
+};
 
 module.exports = {
   helmetConfig,
