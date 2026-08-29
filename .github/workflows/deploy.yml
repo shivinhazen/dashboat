@@ -1,44 +1,16 @@
-name: Deploy to GitHub Pages
+name: Legacy GitHub Pages deploy (disabled)
 
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
-  deploy:
+  disabled:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build project
+      - name: Deployment intentionally disabled
         run: |
-          # Copiar arquivos estáticos para pasta dist
-          mkdir -p dist
-          cp -r *.html dist/
-          cp -r css dist/
-          cp -r js dist/
-          cp -r images dist/
-          cp -r data dist/
-          cp -r fonts dist/
-          cp favicon.* dist/
-          cp robots.txt dist/
-          cp sitemap.xml dist/
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        if: github.ref == 'refs/heads/main'
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          echo "GitHub Pages publishing is disabled for this repository."
+          echo "The application has a server-side API and persisted contact/reservation data; publishing the repository as a static bundle is not a safe deployment path."
