@@ -3,7 +3,9 @@ require('dotenv').config();
 function requireEnv(name) {
   const value = process.env[name]?.trim();
   if (!value) {
-    throw new Error(`${name} is required. Refusing to start with an insecure default.`);
+    throw new Error(
+      `${name} is required. Refusing to start with an insecure default.`
+    );
   }
   return value;
 }
@@ -19,7 +21,9 @@ function requireJwtSecret() {
 function requireAdminPasswordHash() {
   const hash = requireEnv('ADMIN_PASSWORD');
   if (!/^\$2[aby]\$\d{2}\$/.test(hash)) {
-    throw new Error('ADMIN_PASSWORD must be a bcrypt hash, not a plaintext password.');
+    throw new Error(
+      'ADMIN_PASSWORD must be a bcrypt hash, not a plaintext password.'
+    );
   }
   return hash;
 }
