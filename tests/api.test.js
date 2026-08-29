@@ -1,5 +1,12 @@
+process.env.NODE_ENV = 'test';
+process.env.JWT_SECRET = 'test-only-jwt-secret-with-at-least-32-characters';
+process.env.ADMIN_USER = 'test-admin';
+process.env.ADMIN_PASSWORD =
+  '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi';
+process.env.ADMIN_PLAIN_PASSWORD = 'password';
+
 const request = require('supertest');
-const app = require('../js/server'); // Importa a aplicação Express
+const app = require('../js/server');
 const fs = require('fs').promises;
 const path = require('path');
 
@@ -8,13 +15,11 @@ const reservationsFilePath = path.join(__dirname, '../data/reservations.json');
 
 let server;
 let originalContacts, originalReservations;
-let token; // Mover token para o escopo global do describe
+let token;
 
 beforeAll(async () => {
-  // Inicia o servidor em uma porta de teste
   server = app.listen(5001);
 
-  // Salva o estado original dos arquivos
   originalContacts = await fs
     .readFile(contactsFilePath, 'utf8')
     .catch(() => '[]');
@@ -22,26 +27,22 @@ beforeAll(async () => {
     .readFile(reservationsFilePath, 'utf8')
     .catch(() => '[]');
 
-  // Garante que os arquivos comecem vazios para os testes
   await fs.writeFile(contactsFilePath, '[]', 'utf8');
   await fs.writeFile(reservationsFilePath, '[]', 'utf8');
 });
 
 afterAll(async () => {
-  // Restaura o conteúdo original dos arquivos
   await fs.writeFile(contactsFilePath, originalContacts, 'utf8');
   await fs.writeFile(reservationsFilePath, originalReservations, 'utf8');
 
-  // Fecha o servidor e aguarda o encerramento para evitar processos abertos
   await new Promise(resolve => server.close(resolve));
 });
 
 describe('API Endpoints', () => {
-  // Os testes de autenticação são executados primeiro para obter o token
   describe('Admin Authentication', () => {
     it('deve retornar erro 401 para credenciais de login inválidas', async () => {
       const response = await request(app).post('/api/auth/login').send({
-        username: 'admin',
+        username: process.env.ADMIN_USER,
         password: 'senhaincorreta',
       });
 
@@ -54,14 +55,14 @@ describe('API Endpoints', () => {
       const response = await request(app)
         .post('/api/auth/login')
         .send({
-          username: process.env.ADMIN_USER || 'admin',
-          password: process.env.ADMIN_PLAIN_PASSWORD || 'password',
+          username: process.env.ADMIN_USER,
+          password: process.env.ADMIN_PLAIN_PASSWORD,
         });
 
       expect(response.statusCode).toBe(200);
       expect(response.body.success).toBe(true);
       expect(response.body).toHaveProperty('token');
-      token = response.body.token; // Salva o token para outros testes
+      token = response.body.token;
     });
   });
 
@@ -79,7 +80,6 @@ describe('API Endpoints', () => {
       expect(response.statusCode).toBe(200);
       expect(response.body.success).toBe(true);
 
-      // Validação da persistência
       const contacts = JSON.parse(await fs.readFile(contactsFilePath, 'utf8'));
       expect(contacts).toHaveLength(1);
       expect(contacts[0]).toMatchObject(newContact);
@@ -88,7 +88,7 @@ describe('API Endpoints', () => {
     it('deve retornar erro 400 se campos obrigatórios estiverem faltando', async () => {
       const response = await request(app)
         .post('/api/contact')
-        .send({ name: 'Incompleto' }); // Email e mensagem faltando
+        .send({ name: 'Incompleto' });
 
       expect(response.statusCode).toBe(400);
       expect(response.body.success).toBe(false);
@@ -132,12 +132,10 @@ describe('API Endpoints', () => {
       expect(response.statusCode).toBe(200);
       expect(response.body.success).toBe(true);
 
-      // Validação da persistência
       const reservations = JSON.parse(
         await fs.readFile(reservationsFilePath, 'utf8')
       );
       expect(reservations).toHaveLength(1);
-      // Apenas os campos que o servidor realmente salva são verificados
       expect(reservations[0]).toMatchObject({
         name: newReservation.name,
         email: newReservation.email,
@@ -152,7 +150,7 @@ describe('API Endpoints', () => {
     it('deve retornar erro 400 se campos obrigatórios estiverem faltando', async () => {
       const response = await request(app)
         .post('/api/reservations')
-        .send({ name: 'Incompleto', email: 'email@teste.com' }); // Faltando destino, data, etc.
+        .send({ name: 'Incompleto', email: 'email@teste.com' });
 
       expect(response.statusCode).toBe(400);
       expect(response.body.success).toBe(false);
@@ -162,7 +160,6 @@ describe('API Endpoints', () => {
     });
   });
 
-  // Testes para rotas protegidas da área de admin
   describe('Admin Area', () => {
     it('deve retornar erro 401 ao tentar acessar rota protegida sem token', async () => {
       const response = await request(app).get('/api/contacts');
@@ -180,7 +177,6 @@ describe('API Endpoints', () => {
     });
 
     it('deve retornar as estatísticas corretas', async () => {
-      // O estado inicial deve ser 1 contato e 1 reserva dos testes anteriores
       const response = await request(app)
         .get('/api/stats')
         .set('Authorization', `Bearer ${token}`);
