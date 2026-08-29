@@ -45,7 +45,7 @@ npm run dev
 
 Configure the required environment variables in `.env` before exercising authenticated or email-dependent flows.
 
-> Administrative credentials are environment-specific and are intentionally not documented in this public README.
+> Set `ADMIN_USER` and `ADMIN_PASSWORD` explicitly for every deployed environment. The source contains development fallbacks; do not rely on them outside isolated local development, and do not publish administrative credentials in documentation.
 
 ## Useful commands
 
