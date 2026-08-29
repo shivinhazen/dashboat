@@ -34,7 +34,6 @@
   "author": "Lucas Leão",
   "license": "MIT",
   "dependencies": {
-    "@sentry/node": "^9.30.0",
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
@@ -42,7 +41,7 @@
     "express-rate-limit": "^7.5.1",
     "helmet": "^7.0.0",
     "jsonwebtoken": "^9.0.2",
-    "nodemailer": "^6.9.1"
+    "nodemailer": "^9.0.6"
   },
   "devDependencies": {
     "@babel/core": "^7.27.4",
@@ -68,7 +67,7 @@
     "webpack-dev-server": "^5.2.2"
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=20.0.0"
   },
   "repository": {
     "type": "git",
